@@ -95,5 +95,142 @@
   "desktop": {
     "title": "Download Shopee video on PC for free",
     "description": "This method is universal and convenient because the video will be download Shopee videos without watermark online by link in original quality. PC users don't need to install additional software, which is a particular advantage of this method. To use Shopee downloader, you need to copy the video link. Then access Shopee video download site and enter the link in the site field."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "privacy": "Privacy",
+    "terms": "Terms"
+  },
+  "footer": {
+    "description": "Download Shopee videos without watermark quickly and for free.",
+    "links": "Useful Links",
+    "legal": "Legal",
+    "copyright": "© 2025 Shopee Video Downloader. All rights reserved.",
+    "disclaimer": "This site is not affiliated with Shopee. All video rights belong to their respective owners."
+  },
+  "aboutPage": {
+    "title": "About Us",
+    "subtitle": "Your trusted tool for downloading Shopee videos",
+    "mission": {
+      "title": "Our Mission",
+      "description": "We provide a free, fast, and easy-to-use tool for downloading Shopee videos without watermark. Our goal is to make the process simple and accessible to everyone."
+    },
+    "features": {
+      "title": "Why choose our tool?",
+      "free": {
+        "title": "100% Free",
+        "description": "No hidden fees, no subscriptions. Completely free forever."
+      },
+      "easy": {
+        "title": "Easy to Use",
+        "description": "Simple and intuitive interface. Paste the link and download in seconds."
+      },
+      "quality": {
+        "title": "High Quality",
+        "description": "Download videos in the best available quality, including HD."
+      },
+      "safe": {
+        "title": "Safe and Private",
+        "description": "We don't store your data. All downloads are processed securely."
+      }
+    },
+    "commitment": {
+      "title": "Our Commitment",
+      "description": "We are committed to providing the best possible service, keeping the tool free and constantly improving the user experience."
+    }
+  },
+  "contactPage": {
+    "title": "Contact Us",
+    "subtitle": "Have questions or suggestions? We'd love to hear from you!",
+    "email": {
+      "title": "Email",
+      "address": "contact@shopeevideodownloader.com"
+    },
+    "note": {
+      "title": "Before contacting us",
+      "item1": "Check our Frequently Asked Questions page - your question might already be answered.",
+      "item2": "To report technical issues, include as many details as possible.",
+      "item3": "We respond to all emails within 48 hours."
+    }
+  },
+  "privacyPage": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: October 27, 2025",
+    "intro": "This Privacy Policy describes how we collect, use, and protect your information when using our service.",
+    "collection": {
+      "title": "1. Information We Collect",
+      "description": "We collect minimal information necessary to provide our service:",
+      "item1": "URLs of videos you want to download (not stored)",
+      "item2": "Anonymous usage information through Google Analytics",
+      "item3": "Cookies to improve user experience"
+    },
+    "usage": {
+      "title": "2. How We Use Your Information",
+      "item1": "Process your video download requests",
+      "item2": "Improve our service and user experience",
+      "item3": "Analyze site usage trends"
+    },
+    "storage": {
+      "title": "3. Data Storage",
+      "description": "We do not store the videos you download. All processing is done in real-time and no personal data is kept on our servers."
+    },
+    "thirdParty": {
+      "title": "4. Third-Party Services",
+      "description": "We use the following third-party services:",
+      "item1": "Google Analytics - for traffic analysis",
+      "item2": "Google AdSense - to display ads",
+      "item3": "Google Tag Manager - to manage marketing tags"
+    },
+    "rights": {
+      "title": "5. Your Rights",
+      "description": "You have the right to access, correct, or delete your personal information. Contact us to exercise these rights."
+    },
+    "contact": {
+      "title": "6. Contact",
+      "description": "If you have questions about this policy, contact us at: contact@shopeevideodownloader.com"
+    }
+  },
+  "termsPage": {
+    "title": "Terms of Use",
+    "lastUpdated": "Last updated: October 27, 2025",
+    "intro": "By using our service, you agree to the following terms and conditions:",
+    "acceptance": {
+      "title": "1. Acceptance of Terms",
+      "description": "By accessing and using this site, you accept and agree to be bound by the terms and conditions of this policy."
+    },
+    "service": {
+      "title": "2. Service Description",
+      "description": "We provide a free tool to download public Shopee videos. The service is provided \"as is\" without warranties."
+    },
+    "usage": {
+      "title": "3. Acceptable Use",
+      "description": "You agree to:",
+      "item1": "Use the service only for legal purposes",
+      "item2": "Not download copyrighted videos without permission",
+      "item3": "Respect third-party intellectual property rights",
+      "item4": "Not use the service for commercial purposes without authorization"
+    },
+    "prohibited": {
+      "title": "4. Prohibited Activities",
+      "description": "It is prohibited to:",
+      "item1": "Use the service to violate laws or regulations",
+      "item2": "Attempt to compromise the site's security",
+      "item3": "Make excessive use that may harm the service",
+      "item4": "Copy or modify the site's code"
+    },
+    "disclaimer": {
+      "title": "5. Disclaimer",
+      "description": "We are not responsible for the misuse of downloaded content. Users are responsible for ensuring they have the right to download and use the content."
+    },
+    "changes": {
+      "title": "6. Modifications",
+      "description": "We reserve the right to modify these terms at any time. Changes take effect immediately upon publication."
+    },
+    "contact": {
+      "title": "7. Contact",
+      "description": "For questions about these terms, contact: contact@shopeevideodownloader.com"
+    }
   }
 }

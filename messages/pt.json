@@ -95,5 +95,142 @@
   "desktop": {
     "title": "Baixar vídeo Shopee no PC grátis",
     "description": "Este método é universal e conveniente porque o vídeo será baixar vídeos da Shopee sem marca d'água online por link na qualidade original. Não é necessário que os usuários de PC instalem software adicional, o que é uma vantagem particular deste método. Para usar o Shopee downloader, você precisa copiar o link do vídeo. Em seguida, acesse site de Shopee vídeo download e insira o link no campo do site."
+  },
+  "nav": {
+    "home": "Início",
+    "about": "Sobre",
+    "contact": "Contato",
+    "privacy": "Privacidade",
+    "terms": "Termos"
+  },
+  "footer": {
+    "description": "Baixe vídeos da Shopee sem marca d'água de forma rápida e gratuita.",
+    "links": "Links Úteis",
+    "legal": "Legal",
+    "copyright": "© 2025 Shopee Video Downloader. Todos os direitos reservados.",
+    "disclaimer": "Este site não é afiliado à Shopee. Todos os direitos dos vídeos pertencem aos seus respectivos proprietários."
+  },
+  "aboutPage": {
+    "title": "Sobre Nós",
+    "subtitle": "Sua ferramenta confiável para baixar vídeos da Shopee",
+    "mission": {
+      "title": "Nossa Missão",
+      "description": "Fornecemos uma ferramenta gratuita, rápida e fácil de usar para baixar vídeos da Shopee sem marca d'água. Nosso objetivo é tornar o processo simples e acessível para todos."
+    },
+    "features": {
+      "title": "Por que escolher nossa ferramenta?",
+      "free": {
+        "title": "100% Gratuito",
+        "description": "Sem taxas ocultas, sem assinaturas. Completamente gratuito para sempre."
+      },
+      "easy": {
+        "title": "Fácil de Usar",
+        "description": "Interface simples e intuitiva. Cole o link e baixe em segundos."
+      },
+      "quality": {
+        "title": "Alta Qualidade",
+        "description": "Baixe vídeos na melhor qualidade disponível, incluindo HD."
+      },
+      "safe": {
+        "title": "Seguro e Privado",
+        "description": "Não armazenamos seus dados. Todos os downloads são processados de forma segura."
+      }
+    },
+    "commitment": {
+      "title": "Nosso Compromisso",
+      "description": "Estamos comprometidos em fornecer o melhor serviço possível, mantendo a ferramenta gratuita e constantemente melhorando a experiência do usuário."
+    }
+  },
+  "contactPage": {
+    "title": "Entre em Contato",
+    "subtitle": "Tem dúvidas ou sugestões? Adoraríamos ouvir você!",
+    "email": {
+      "title": "E-mail",
+      "address": "contato@shopeevideodownloader.com"
+    },
+    "note": {
+      "title": "Antes de entrar em contato",
+      "item1": "Verifique nossa página de Perguntas Frequentes - sua dúvida pode já estar respondida.",
+      "item2": "Para reportar problemas técnicos, inclua o máximo de detalhes possível.",
+      "item3": "Respondemos todos os e-mails em até 48 horas."
+    }
+  },
+  "privacyPage": {
+    "title": "Política de Privacidade",
+    "lastUpdated": "Última atualização: 27 de outubro de 2025",
+    "intro": "Esta Política de Privacidade descreve como coletamos, usamos e protegemos suas informações ao usar nosso serviço.",
+    "collection": {
+      "title": "1. Informações que Coletamos",
+      "description": "Coletamos informações mínimas necessárias para fornecer nosso serviço:",
+      "item1": "URLs de vídeos que você deseja baixar (não armazenados)",
+      "item2": "Informações de uso anônimas através do Google Analytics",
+      "item3": "Cookies para melhorar a experiência do usuário"
+    },
+    "usage": {
+      "title": "2. Como Usamos suas Informações",
+      "item1": "Processar seus pedidos de download de vídeos",
+      "item2": "Melhorar nosso serviço e experiência do usuário",
+      "item3": "Analisar tendências de uso do site"
+    },
+    "storage": {
+      "title": "3. Armazenamento de Dados",
+      "description": "Não armazenamos os vídeos que você baixa. Todo o processamento é feito em tempo real e nenhum dado pessoal é mantido em nossos servidores."
+    },
+    "thirdParty": {
+      "title": "4. Serviços de Terceiros",
+      "description": "Utilizamos os seguintes serviços de terceiros:",
+      "item1": "Google Analytics - para análise de tráfego",
+      "item2": "Google AdSense - para exibir anúncios",
+      "item3": "Google Tag Manager - para gerenciar tags de marketing"
+    },
+    "rights": {
+      "title": "5. Seus Direitos",
+      "description": "Você tem o direito de acessar, corrigir ou excluir suas informações pessoais. Entre em contato conosco para exercer esses direitos."
+    },
+    "contact": {
+      "title": "6. Contato",
+      "description": "Se você tiver dúvidas sobre esta política, entre em contato conosco em: contato@shopeevideodownloader.com"
+    }
+  },
+  "termsPage": {
+    "title": "Termos de Uso",
+    "lastUpdated": "Última atualização: 27 de outubro de 2025",
+    "intro": "Ao usar nosso serviço, você concorda com os seguintes termos e condições:",
+    "acceptance": {
+      "title": "1. Aceitação dos Termos",
+      "description": "Ao acessar e usar este site, você aceita e concorda em estar vinculado aos termos e condições desta política."
+    },
+    "service": {
+      "title": "2. Descrição do Serviço",
+      "description": "Fornecemos uma ferramenta gratuita para baixar vídeos públicos da Shopee. O serviço é fornecido \"como está\" sem garantias."
+    },
+    "usage": {
+      "title": "3. Uso Aceitável",
+      "description": "Você concorda em:",
+      "item1": "Usar o serviço apenas para fins legais",
+      "item2": "Não baixar vídeos protegidos por direitos autorais sem permissão",
+      "item3": "Respeitar os direitos de propriedade intelectual de terceiros",
+      "item4": "Não usar o serviço para fins comerciais sem autorização"
+    },
+    "prohibited": {
+      "title": "4. Atividades Proibidas",
+      "description": "É proibido:",
+      "item1": "Usar o serviço para violar leis ou regulamentos",
+      "item2": "Tentar comprometer a segurança do site",
+      "item3": "Fazer uso excessivo que possa prejudicar o serviço",
+      "item4": "Copiar ou modificar o código do site"
+    },
+    "disclaimer": {
+      "title": "5. Isenção de Responsabilidade",
+      "description": "Não nos responsabilizamos pelo uso indevido do conteúdo baixado. Os usuários são responsáveis por garantir que têm o direito de baixar e usar o conteúdo."
+    },
+    "changes": {
+      "title": "6. Modificações",
+      "description": "Reservamos o direito de modificar estes termos a qualquer momento. As alterações entram em vigor imediatamente após a publicação."
+    },
+    "contact": {
+      "title": "7. Contato",
+      "description": "Para questões sobre estes termos, entre em contato: contato@shopeevideodownloader.com"
+    }
   }
 }

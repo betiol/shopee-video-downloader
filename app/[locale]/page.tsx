@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/accordion";
 import { Download, Loader2, Video, Infinity, Droplet, FileVideo } from "lucide-react";
 import LanguageSwitcher from "@/components/language-switcher";
+import Footer from "@/components/footer";
 
 export default function Home() {
   const t = useTranslations("home");
@@ -306,11 +307,7 @@ export default function Home() {
         </section>
 
         {/* Footer */}
-        <footer className="py-8 px-4 border-t bg-white/80">
-          <div className="max-w-6xl mx-auto text-center text-sm text-muted-foreground">
-            <p>&copy; 2025 Shopee Video Downloader. All rights reserved.</p>
-          </div>
-        </footer>
+        <Footer />
       </main>
     </>
   );
