@@ -109,6 +109,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <head>
+        <meta name="google-adsense-account" content="ca-pub-5771662142995562" />
         <link rel="icon" href="/favicon.ico" />
         <StructuredData />
       </head>
