@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -112,6 +113,12 @@ export default async function LocaleLayout({
         <StructuredData />
       </head>
       <body className={inter.className}>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5771662142995562"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>
