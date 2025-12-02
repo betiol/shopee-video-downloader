@@ -1,14 +1,14 @@
 {
   "home": {
     "title": "Shopee Video Downloader",
-    "description": "Baixe vídeos da Shopee sem marca d'água de forma rápida e gratuita. Cole a URL do vídeo abaixo e clique em baixar.",
+    "description": "Baixe vídeos da Shopee sem marca d'água de forma rápida e fácil. Cole a URL do vídeo abaixo e clique em baixar.",
     "inputPlaceholder": "Cole a URL do vídeo da Shopee aqui...",
     "downloadButton": "Baixar",
     "processing": "Processando...",
     "videoReady": "Vídeo Pronto!",
     "downloadVideo": "Baixar Vídeo sem Marca D'água",
     "error": "Erro ao processar o vídeo, tente novamente",
-    "footer": "Esta ferramenta é gratuita e não armazena nenhum dado. Todos os vídeos são processados em tempo real."
+    "footer": "Todos os vídeos são processados em tempo real."
   },
   "howTo": {
     "title": "Como baixar vídeo da Shopee sem marca d'água?",

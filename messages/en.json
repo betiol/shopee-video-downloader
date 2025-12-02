@@ -1,14 +1,14 @@
 {
   "home": {
     "title": "Shopee Video Downloader",
-    "description": "Download Shopee videos without watermark quickly and for free. Paste the video URL below and click download.",
+    "description": "Download Shopee videos without watermark quickly and easily. Paste the video URL below and click download.",
     "inputPlaceholder": "Paste the Shopee video URL here...",
     "downloadButton": "Download",
     "processing": "Processing...",
     "videoReady": "Video Ready!",
     "downloadVideo": "Download Video without Watermark",
     "error": "Error processing video, please try again",
-    "footer": "This tool is free and does not store any data. All videos are processed in real time."
+    "footer": "All videos are processed in real time."
   },
   "howTo": {
     "title": "How to download Shopee video without watermark?",
