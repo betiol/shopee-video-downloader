@@ -232,5 +232,32 @@
       "title": "7. Contact",
       "description": "For questions about these terms, contact: contact@shopeevideodownloader.com"
     }
+  },
+  "upgradeModal": {
+    "title": "Upgrade to Premium",
+    "description": "Unlock unlimited downloads for only",
+    "price": "R$50",
+    "oneTime": "One-time payment • Lifetime access",
+    "features": {
+      "unlimited": {
+        "title": "Unlimited Downloads",
+        "description": "Download as many videos as you want, no daily limits"
+      },
+      "noWatermark": {
+        "title": "No Watermark",
+        "description": "Clean videos, without Shopee watermark"
+      },
+      "lifetime": {
+        "title": "Lifetime Access",
+        "description": "Pay once, use forever"
+      },
+      "support": {
+        "title": "Priority Support",
+        "description": "Fast assistance when you need it"
+      }
+    },
+    "button": "Upgrade Now",
+    "processing": "Processing...",
+    "securePayment": "Secure payment processed by Stripe"
   }
 }

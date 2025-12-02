@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import "./globals.css";
 import StructuredData from "@/components/structured-data";
 import { routing } from "@/i18n/routing";
+import { AuthProvider } from "@/components/auth-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -151,7 +152,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           />
         </noscript>
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <AuthProvider>
+            {children}
+          </AuthProvider>
         </NextIntlClientProvider>
         <Script
           async

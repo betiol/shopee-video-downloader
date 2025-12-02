@@ -15,6 +15,10 @@ import { Download, Loader2, Video, Infinity, Droplet, FileVideo } from "lucide-r
 import LanguageSwitcher from "@/components/language-switcher";
 import Footer from "@/components/footer";
 import AdSenseAd from "@/components/adsense-ad";
+import { UserMenu } from "@/components/user-menu";
+import { useAuth } from "@/components/auth-provider";
+import { LoginModal } from "@/components/login-modal";
+import { UpgradeModal } from "@/components/upgrade-modal";
 
 export default function Home() {
   const t = useTranslations("home");
@@ -29,6 +33,9 @@ export default function Home() {
   const [videoUrl, setVideoUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [loginOpen, setLoginOpen] = useState(false);
+  const [upgradeOpen, setUpgradeOpen] = useState(false);
+  const { user } = useAuth();
 
   const handleDownload = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,15 +44,31 @@ export default function Home() {
     setLoading(true);
 
     try {
+      const token = user ? await user.getIdToken() : null;
       const response = await fetch("/api/download", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": token ? `Bearer ${token}` : "",
         },
         body: JSON.stringify({ url }),
       });
 
       const data = await response.json();
+
+      if (response.status === 401) {
+        setLoginOpen(true);
+        setLoading(false);
+        return;
+      }
+
+      // Check if limit was reached
+      if (response.status === 403 && data.code === "LIMIT_REACHED") {
+        setUpgradeOpen(true);
+        setError(data.error);
+        setLoading(false);
+        return;
+      }
 
       if (!response.ok) {
         throw new Error(data.error || t("error"));
@@ -71,9 +94,32 @@ export default function Home() {
     }
   };
 
+  const handleUpgrade = async () => {
+    try {
+      const token = await user?.getIdToken();
+      const response = await fetch("/api/stripe/checkout", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const data = await response.json();
+      if (data.url) {
+        window.location.href = data.url;
+      }
+    } catch (error) {
+      console.error("Upgrade failed:", error);
+    }
+  };
+
   return (
     <>
-      <LanguageSwitcher />
+      <div className="fixed top-4 right-4 z-50 flex items-center gap-2">
+        <LanguageSwitcher />
+        <UserMenu />
+      </div>
+      <LoginModal open={loginOpen} onOpenChange={setLoginOpen} />
+      <UpgradeModal open={upgradeOpen} onOpenChange={setUpgradeOpen} onUpgrade={handleUpgrade} />
       <main className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-purple-50">
         {/* Hero Section */}
         <section className="flex items-center justify-center p-4 min-h-[60vh]">

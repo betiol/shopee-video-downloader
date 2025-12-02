@@ -21,7 +21,7 @@ export default function LanguageSwitcher() {
       variant="outline"
       size="sm"
       onClick={switchLanguage}
-      className="fixed top-4 right-4 z-50 gap-2"
+      className="gap-2"
     >
       <Globe className="h-4 w-4" />
       {locale === "pt" ? "EN" : "PT"}

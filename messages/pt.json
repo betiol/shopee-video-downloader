@@ -232,5 +232,32 @@
       "title": "7. Contato",
       "description": "Para questões sobre estes termos, entre em contato: contato@shopeevideodownloader.com"
     }
+  },
+  "upgradeModal": {
+    "title": "Upgrade para Premium",
+    "description": "Desbloqueie downloads ilimitados por apenas",
+    "price": "R$50",
+    "oneTime": "Pagamento único • Acesso vitalício",
+    "features": {
+      "unlimited": {
+        "title": "Downloads Ilimitados",
+        "description": "Baixe quantos vídeos quiser, sem limites diários"
+      },
+      "noWatermark": {
+        "title": "Sem Marca d'água",
+        "description": "Vídeos limpos, sem watermark da Shopee"
+      },
+      "lifetime": {
+        "title": "Acesso Vitalício",
+        "description": "Pague uma vez, use para sempre"
+      },
+      "support": {
+        "title": "Suporte Prioritário",
+        "description": "Atendimento rápido quando precisar"
+      }
+    },
+    "button": "Fazer Upgrade Agora",
+    "processing": "Processando...",
+    "securePayment": "Pagamento seguro processado pelo Stripe"
   }
 }
