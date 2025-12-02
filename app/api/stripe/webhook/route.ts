@@ -31,15 +31,38 @@ export async function POST(request: NextRequest) {
     if (event.type === "checkout.session.completed") {
         const session = event.data.object as Stripe.Checkout.Session;
         const userId = session.metadata?.userId;
+        const paymentIntentId = session.payment_intent;
 
-        if (userId) {
+        console.log(`📦 Checkout session completed:`, {
+            sessionId: session.id,
+            userId,
+            paymentIntentId,
+            customerEmail: session.customer_email,
+            paymentStatus: session.payment_status,
+        });
+
+        if (!userId) {
+            console.error("❌ No userId in session metadata!");
+            return NextResponse.json({ received: true, error: "No userId" });
+        }
+
+        if (!paymentIntentId) {
+            console.error("❌ No payment_intent in session!");
+            return NextResponse.json({ received: true, error: "No payment_intent" });
+        }
+
+        try {
             // Update user to premium and store payment intent ID
             await adminDb.ref(`users/${userId}`).update({
                 isPremium: true,
-                paymentIntentId: session.payment_intent,
+                paymentIntentId: paymentIntentId,
+                customerEmail: session.customer_email,
                 purchasedAt: new Date().toISOString(),
             });
-            console.log(`User ${userId} upgraded to premium`);
+            console.log(`✅ User ${userId} upgraded to premium with payment intent ${paymentIntentId}`);
+        } catch (error: any) {
+            console.error(`❌ Error updating user ${userId}:`, error.message);
+            return NextResponse.json({ received: true, error: error.message });
         }
     }
 
