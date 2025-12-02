@@ -33,9 +33,39 @@ export async function POST(request: NextRequest) {
         const userId = session.metadata?.userId;
 
         if (userId) {
-            // Update user to premium
-            await adminDb.ref(`users/${userId}/isPremium`).set(true);
+            // Update user to premium and store payment intent ID
+            await adminDb.ref(`users/${userId}`).update({
+                isPremium: true,
+                paymentIntentId: session.payment_intent,
+                purchasedAt: new Date().toISOString(),
+            });
             console.log(`User ${userId} upgraded to premium`);
+        }
+    }
+
+    if (event.type === "charge.refunded") {
+        const charge = event.data.object as Stripe.Charge;
+        const paymentIntentId = charge.payment_intent as string;
+
+        // Find user by payment intent ID
+        const usersRef = adminDb.ref("users");
+        const snapshot = await usersRef
+            .orderByChild("paymentIntentId")
+            .equalTo(paymentIntentId)
+            .once("value");
+
+        if (snapshot.exists()) {
+            const users = snapshot.val();
+            const userId = Object.keys(users)[0];
+
+            // Revoke premium access
+            await adminDb.ref(`users/${userId}`).update({
+                isPremium: false,
+                refundCompleted: true,
+                refundCompletedAt: new Date().toISOString(),
+            });
+
+            console.log(`User ${userId} premium access revoked due to refund`);
         }
     }
 

@@ -5,7 +5,7 @@ import { useAuth } from "@/components/auth-provider";
 import { Button } from "@/components/ui/button";
 import { LoginModal } from "@/components/login-modal";
 import { UpgradeModal } from "@/components/upgrade-modal";
-import { Loader2, LogOut, Crown, User as UserIcon } from "lucide-react";
+import { Loader2, LogOut, Crown, User as UserIcon, RefreshCcw } from "lucide-react";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -14,12 +14,25 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+} from "@/components/ui/dialog";
+import { useTranslations } from "next-intl";
 
 export function UserMenu() {
     const { user, loading, usage, isPremium, logout } = useAuth();
     const [loginOpen, setLoginOpen] = useState(false);
     const [upgradeOpen, setUpgradeOpen] = useState(false);
     const [checkoutLoading, setCheckoutLoading] = useState(false);
+    const [refundDialogOpen, setRefundDialogOpen] = useState(false);
+    const [refundLoading, setRefundLoading] = useState(false);
+    const [refundMessage, setRefundMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+    const t = useTranslations();
 
     const handleUpgrade = async () => {
         setCheckoutLoading(true);
@@ -41,6 +54,40 @@ export function UserMenu() {
             console.error("Upgrade failed:", error);
         } finally {
             setCheckoutLoading(false);
+        }
+    };
+
+    const handleRefundRequest = async () => {
+        setRefundLoading(true);
+        setRefundMessage(null);
+        try {
+            const token = await user?.getIdToken();
+            const response = await fetch("/api/stripe/refund", {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            const data = await response.json();
+            
+            if (response.ok) {
+                setRefundMessage({ type: "success", text: t("refund.success") });
+                // Refresh the page after 3 seconds to update user status
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000);
+            } else {
+                if (data.error === "Refund already requested") {
+                    setRefundMessage({ type: "error", text: t("refund.alreadyRequested") });
+                } else {
+                    setRefundMessage({ type: "error", text: t("refund.error") });
+                }
+            }
+        } catch (error) {
+            console.error("Refund failed:", error);
+            setRefundMessage({ type: "error", text: t("refund.error") });
+        } finally {
+            setRefundLoading(false);
         }
     };
 
@@ -110,6 +157,12 @@ export function UserMenu() {
                             Upgrade
                         </DropdownMenuItem>
                     )}
+                    {isPremium && (
+                        <DropdownMenuItem onClick={() => setRefundDialogOpen(true)}>
+                            <RefreshCcw className="mr-2 h-4 w-4 text-red-500" />
+                            {t("refund.button")}
+                        </DropdownMenuItem>
+                    )}
                     <DropdownMenuItem onClick={() => logout()}>
                         <LogOut className="mr-2 h-4 w-4" />
                         Logout
@@ -122,6 +175,51 @@ export function UserMenu() {
                 onOpenChange={setUpgradeOpen}
                 onUpgrade={handleUpgrade}
             />
+
+            <Dialog open={refundDialogOpen} onOpenChange={setRefundDialogOpen}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>{t("refund.confirmTitle")}</DialogTitle>
+                        <DialogDescription>
+                            {t("refund.confirmMessage")}
+                        </DialogDescription>
+                    </DialogHeader>
+                    {refundMessage && (
+                        <div
+                            className={`p-3 rounded-md text-sm ${
+                                refundMessage.type === "success"
+                                    ? "bg-green-50 text-green-800 border border-green-200"
+                                    : "bg-red-50 text-red-800 border border-red-200"
+                            }`}
+                        >
+                            {refundMessage.text}
+                        </div>
+                    )}
+                    <DialogFooter>
+                        <Button
+                            variant="outline"
+                            onClick={() => setRefundDialogOpen(false)}
+                            disabled={refundLoading}
+                        >
+                            {t("refund.cancel")}
+                        </Button>
+                        <Button
+                            variant="destructive"
+                            onClick={handleRefundRequest}
+                            disabled={refundLoading}
+                        >
+                            {refundLoading ? (
+                                <>
+                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                    {t("refund.processing")}
+                                </>
+                            ) : (
+                                t("refund.confirm")
+                            )}
+                        </Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
         </div>
     );
 }

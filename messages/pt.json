@@ -259,5 +259,16 @@
     "button": "Fazer Upgrade Agora",
     "processing": "Processando...",
     "securePayment": "Pagamento seguro processado pelo Stripe"
+  },
+  "refund": {
+    "button": "Solicitar Reembolso",
+    "processing": "Processando reembolso...",
+    "success": "Reembolso solicitado com sucesso! Você receberá seu dinheiro de volta em 5-10 dias úteis.",
+    "error": "Erro ao processar reembolso. Entre em contato com o suporte.",
+    "alreadyRequested": "Reembolso já solicitado para esta conta.",
+    "confirmTitle": "Solicitar Reembolso?",
+    "confirmMessage": "Tem certeza que deseja solicitar um reembolso? Seu acesso premium será revogado.",
+    "confirm": "Sim, Solicitar Reembolso",
+    "cancel": "Cancelar"
   }
 }

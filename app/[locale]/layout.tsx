@@ -141,6 +141,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             `,
           }}
         />
+        <Script
+          src="https://t.contentsquare.net/uxa/a9a09e3280230.js"
+          strategy="afterInteractive"
+        />
       </head>
       <body className={inter.className}>
         <noscript>

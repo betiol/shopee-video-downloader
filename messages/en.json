@@ -259,5 +259,16 @@
     "button": "Upgrade Now",
     "processing": "Processing...",
     "securePayment": "Secure payment processed by Stripe"
+  },
+  "refund": {
+    "button": "Request Refund",
+    "processing": "Processing refund...",
+    "success": "Refund requested successfully! You will receive your money back in 5-10 business days.",
+    "error": "Error processing refund. Please contact support.",
+    "alreadyRequested": "Refund already requested for this account.",
+    "confirmTitle": "Request Refund?",
+    "confirmMessage": "Are you sure you want to request a refund? Your premium access will be revoked.",
+    "confirm": "Yes, Request Refund",
+    "cancel": "Cancel"
   }
 }
