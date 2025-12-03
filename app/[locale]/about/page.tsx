@@ -130,6 +130,31 @@ export default function AboutPage() {
           </CardContent>
         </Card>
 
+        {/* Payment & Disclaimer */}
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          <Card className="border-purple-100 shadow-lg bg-white">
+            <CardContent className="p-8">
+              <h2 className="text-2xl font-bold mb-4 text-foreground">
+                {t("payment.title")}
+              </h2>
+              <p className="text-muted-foreground leading-relaxed">
+                {t("payment.description")}
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="border-purple-100 shadow-lg bg-white">
+            <CardContent className="p-8">
+              <h2 className="text-2xl font-bold mb-4 text-foreground">
+                {t("serviceDisclaimer.title")}
+              </h2>
+              <p className="text-muted-foreground leading-relaxed">
+                {t("serviceDisclaimer.description")}
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
         {/* Additional Content Sections */}
         <div className="mt-12 space-y-8">
           <Card className="border-purple-100 shadow-lg">

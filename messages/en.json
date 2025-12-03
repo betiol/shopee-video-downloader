@@ -139,6 +139,14 @@
     "commitment": {
       "title": "Our Commitment",
       "description": "We are committed to providing the best possible service, keeping the tool free and constantly improving the user experience."
+    },
+    "payment": {
+      "title": "Premium Access",
+      "description": "We offer a Premium plan with unlimited downloads for a one-time payment. No monthly subscriptions."
+    },
+    "serviceDisclaimer": {
+      "title": "Service Availability",
+      "description": "Please note that this service relies on Shopee's current video delivery methods. The service will function as long as Shopee does not block or significantly change their video resource access. We cannot guarantee indefinite availability if Shopee makes fundamental changes to their platform."
     }
   },
   "contactPage": {
@@ -181,7 +189,8 @@
       "description": "We use the following third-party services:",
       "item1": "Google Analytics - for traffic analysis",
       "item2": "Google AdSense - to display ads",
-      "item3": "Google Tag Manager - to manage marketing tags"
+      "item3": "Google Tag Manager - to manage marketing tags",
+      "item4": "Stripe - for secure payment processing"
     },
     "rights": {
       "title": "5. Your Rights",
@@ -231,6 +240,10 @@
     "contact": {
       "title": "7. Contact",
       "description": "For questions about these terms, contact: contact@shopeevideodownloader.com"
+    },
+    "availability": {
+      "title": "8. Service Availability",
+      "description": "The functionality of this app depends on external factors, specifically Shopee's platform. The app will function until or unless Shopee blocks the resource or changes their system in a way that prevents downloading. We do not guarantee that the service will work indefinitely."
     }
   },
   "upgradeModal": {

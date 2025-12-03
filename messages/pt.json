@@ -139,6 +139,14 @@
     "commitment": {
       "title": "Nosso Compromisso",
       "description": "Estamos comprometidos em fornecer o melhor serviço possível, mantendo a ferramenta gratuita e constantemente melhorando a experiência do usuário."
+    },
+    "payment": {
+      "title": "Acesso Premium",
+      "description": "Oferecemos um plano Premium com downloads ilimitados por um pagamento único. Sem assinaturas mensais."
+    },
+    "serviceDisclaimer": {
+      "title": "Disponibilidade do Serviço",
+      "description": "Observe que este serviço depende dos métodos atuais de entrega de vídeo da Shopee. O serviço funcionará enquanto a Shopee não bloquear ou alterar significativamente o acesso aos recursos de vídeo. Não podemos garantir disponibilidade indefinida se a Shopee fizer alterações fundamentais em sua plataforma."
     }
   },
   "contactPage": {
@@ -181,7 +189,8 @@
       "description": "Utilizamos os seguintes serviços de terceiros:",
       "item1": "Google Analytics - para análise de tráfego",
       "item2": "Google AdSense - para exibir anúncios",
-      "item3": "Google Tag Manager - para gerenciar tags de marketing"
+      "item3": "Google Tag Manager - para gerenciar tags de marketing",
+      "item4": "Stripe - para processamento seguro de pagamentos"
     },
     "rights": {
       "title": "5. Seus Direitos",
@@ -231,6 +240,10 @@
     "contact": {
       "title": "7. Contato",
       "description": "Para questões sobre estes termos, entre em contato: contato@shopeevideodownloader.com"
+    },
+    "availability": {
+      "title": "8. Disponibilidade do Serviço",
+      "description": "A funcionalidade deste aplicativo depende de fatores externos, especificamente da plataforma Shopee. O aplicativo funcionará até ou a menos que a Shopee bloqueie o recurso ou altere seu sistema de uma forma que impeça o download. Não garantimos que o serviço funcionará indefinidamente."
     }
   },
   "upgradeModal": {

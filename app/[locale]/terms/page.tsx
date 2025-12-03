@@ -141,6 +141,16 @@ export default function TermsPage() {
               <p className="text-purple-50">{t("contact.description")}</p>
             </CardContent>
           </Card>
+
+          {/* Availability */}
+          <Card className="border-purple-100 shadow-lg">
+            <CardContent className="p-8">
+              <h2 className="text-2xl font-bold mb-4 text-foreground">
+                {t("availability.title")}
+              </h2>
+              <p className="text-muted-foreground">{t("availability.description")}</p>
+            </CardContent>
+          </Card>
         </div>
       </div>
       <Footer />

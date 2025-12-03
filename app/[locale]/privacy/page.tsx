@@ -117,6 +117,10 @@ export default function PrivacyPage() {
                   <span className="text-primary mt-1">•</span>
                   <p className="text-muted-foreground">{t("thirdParty.item3")}</p>
                 </li>
+                <li className="flex gap-3">
+                  <span className="text-primary mt-1">•</span>
+                  <p className="text-muted-foreground">{t("thirdParty.item4")}</p>
+                </li>
               </ul>
             </CardContent>
           </Card>
