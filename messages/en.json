@@ -1,7 +1,7 @@
 {
   "home": {
     "title": "Shopee Video Downloader",
-    "description": "Download Shopee videos without watermark quickly and easily. Paste the video URL below and click download.",
+    "description": "Download Shopee videos without watermark quickly and easily. Free plan with 5 daily downloads or unlimited premium.",
     "inputPlaceholder": "Paste the Shopee video URL here...",
     "downloadButton": "Download",
     "processing": "Processing...",
@@ -84,8 +84,8 @@
   },
   "about": {
     "title": "Download Shopee video with Shopee Downloader",
-    "p1": "Shopee is an online tool to download Shopee videos by link. Shopee downloader can help you save Shopee videos in MP4 with HD resolution. To learn how to download Shopee video online for free, follow the instructions below. It's so easy that you can save videos in three easy steps.",
-    "p2": "With our Shopee Download online, you can easily save any video, music or remove Shopee watermark in MP4 format with the best quality and fast Shopee video download.",
+    "p1": "Shopee Downloader is an online tool to download Shopee videos by link. Our tool can help you save Shopee videos in MP4 with HD resolution. We offer a free plan with 5 daily downloads and a premium plan with unlimited downloads for a one-time payment.",
+    "p2": "With our Shopee Downloader, you can easily save any video without Shopee watermark in MP4 format with the best available quality.",
     "p3": "You don't need to install any software on your phone or PC. All you need is a link to the page containing the Shopee video and all processing is done on our side."
   },
   "mobile": {
@@ -93,8 +93,8 @@
     "description": "If you want Shopee video download on your mobile (Android, iPhone), you need to start the original app and find the video you want to save. When on the video display page, you will see the 'Share' button on the right side of the screen. Click on it and select 'Copy link'. Open the Shopee page and enter the link. On the next page, click 'Download without watermark'."
   },
   "desktop": {
-    "title": "Download Shopee video on PC for free",
-    "description": "This method is universal and convenient because the video will be download Shopee videos without watermark online by link in original quality. PC users don't need to install additional software, which is a particular advantage of this method. To use Shopee downloader, you need to copy the video link. Then access Shopee video download site and enter the link in the site field."
+    "title": "Download Shopee video on PC",
+    "description": "This method is universal and convenient because the video will be downloaded without watermark online by link in original quality. PC users don't need to install additional software, which is a particular advantage of this method. To use Shopee downloader, you need to copy the video link. Then access our site and enter the link in the field. Free plan allows 5 downloads per day, or upgrade to premium for unlimited downloads."
   },
   "nav": {
     "home": "Home",
@@ -104,7 +104,7 @@
     "terms": "Terms"
   },
   "footer": {
-    "description": "Download Shopee videos without watermark quickly and for free.",
+    "description": "Download Shopee videos without watermark quickly and easily. Free or premium plan available.",
     "links": "Useful Links",
     "legal": "Legal",
     "copyright": "© 2025 Shopee Video Downloader. All rights reserved.",
