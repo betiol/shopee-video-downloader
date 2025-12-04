@@ -28,8 +28,8 @@ export default function Home() {
   const tAbout = useTranslations("about");
   const tMobile = useTranslations("mobile");
   const tDesktop = useTranslations("desktop");
-  const tTips = useTranslations("tips");
-  const tEducation = useTranslations("education");
+  const tTips = useTranslations("auth.tips");
+  const tEducation = useTranslations("auth.education");
 
   const [url, setUrl] = useState("");
   const [videoUrl, setVideoUrl] = useState("");
