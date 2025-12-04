@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useAuth } from "@/components/auth-provider";
 import { Button } from "@/components/ui/button";
-import { LoginModal } from "@/components/login-modal";
+import { AuthModal } from "@/components/auth-modal";
 import { UpgradeModal } from "@/components/upgrade-modal";
 import { Loader2, LogOut, Crown, User as UserIcon, RefreshCcw } from "lucide-react";
 import {
@@ -69,7 +69,7 @@ export function UserMenu() {
                 },
             });
             const data = await response.json();
-            
+
             if (response.ok) {
                 setRefundMessage({ type: "success", text: t("refund.success") });
                 // Refresh the page after 3 seconds to update user status
@@ -101,7 +101,7 @@ export function UserMenu() {
                 <Button onClick={() => setLoginOpen(true)} variant="outline" size="sm">
                     Login
                 </Button>
-                <LoginModal open={loginOpen} onOpenChange={setLoginOpen} />
+                <AuthModal open={loginOpen} onOpenChange={setLoginOpen} />
             </>
         );
     }
@@ -186,11 +186,10 @@ export function UserMenu() {
                     </DialogHeader>
                     {refundMessage && (
                         <div
-                            className={`p-3 rounded-md text-sm ${
-                                refundMessage.type === "success"
-                                    ? "bg-green-50 text-green-800 border border-green-200"
-                                    : "bg-red-50 text-red-800 border border-red-200"
-                            }`}
+                            className={`p-3 rounded-md text-sm ${refundMessage.type === "success"
+                                ? "bg-green-50 text-green-800 border border-green-200"
+                                : "bg-red-50 text-red-800 border border-red-200"
+                                }`}
                         >
                             {refundMessage.text}
                         </div>

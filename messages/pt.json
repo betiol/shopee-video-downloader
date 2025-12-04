@@ -283,5 +283,70 @@
     "confirmMessage": "Tem certeza que deseja solicitar um reembolso? Seu acesso premium será revogado.",
     "confirm": "Sim, Solicitar Reembolso",
     "cancel": "Cancelar"
+  },
+  "auth": {
+    "login": {
+      "title": "Bem-vindo de Volta",
+      "description": "Faça login para continuar baixando vídeos",
+      "email": "Email",
+      "emailPlaceholder": "seu@email.com",
+      "password": "Senha",
+      "passwordPlaceholder": "••••••••",
+      "button": "Entrar",
+      "signingIn": "Entrando...",
+      "orContinueWith": "Ou continue com",
+      "googleButton": "Entrar com Google"
+    },
+    "signup": {
+      "title": "Criar Conta",
+      "description": "Cadastre-se para começar a baixar vídeos",
+      "email": "Email",
+      "emailPlaceholder": "seu@email.com",
+      "password": "Senha",
+      "passwordPlaceholder": "••••••••",
+      "passwordHint": "Mínimo 6 caracteres",
+      "confirmPassword": "Confirmar Senha",
+      "button": "Criar Conta",
+      "creatingAccount": "Criando conta..."
+    },
+    "tabs": {
+      "login": "Login",
+      "signup": "Cadastrar"
+    },
+    "errors": {
+      "invalidCredential": "Email ou senha inválidos",
+      "userNotFound": "Nenhuma conta encontrada com este email",
+      "wrongPassword": "Senha inválida",
+      "emailInUse": "Já existe uma conta com este email",
+      "invalidEmail": "Endereço de email inválido",
+      "weakPassword": "Senha muito fraca",
+      "passwordMismatch": "As senhas não coincidem",
+      "passwordTooShort": "A senha deve ter pelo menos 6 caracteres",
+      "generic": "Falha ao fazer login"
+    },
+    "success": {
+      "loggedIn": "Login realizado com sucesso!",
+      "accountCreated": "Conta criada! Por favor, verifique seu email para ativar sua conta.",
+      "passwordResetSent": "Email de recuperação enviado! Verifique sua caixa de entrada.",
+      "verificationSent": "Email de verificação enviado! Verifique sua caixa de entrada."
+    },
+    "reset": {
+      "title": "Recuperar Senha",
+      "description": "Digite seu email para receber o link de recuperação",
+      "email": "Email",
+      "emailPlaceholder": "seu@email.com",
+      "hint": "Enviaremos um link para redefinir sua senha",
+      "button": "Enviar Link",
+      "sending": "Enviando...",
+      "backToLogin": "Voltar ao login",
+      "forgotPassword": "Esqueceu a senha?"
+    },
+    "verification": {
+      "warning": "Por favor, verifique seu endereço de email",
+      "checkInbox": "Verifique sua caixa de entrada para o email de verificação.",
+      "spamHint": "Não esqueça de verificar sua caixa de spam!",
+      "resendButton": "Reenviar Email de Verificação",
+      "sending": "Enviando..."
+    }
   }
 }

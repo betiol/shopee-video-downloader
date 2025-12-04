@@ -283,5 +283,70 @@
     "confirmMessage": "Are you sure you want to request a refund? Your premium access will be revoked.",
     "confirm": "Yes, Request Refund",
     "cancel": "Cancel"
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome Back",
+      "description": "Sign in to continue downloading videos",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "password": "Password",
+      "passwordPlaceholder": "••••••••",
+      "button": "Sign In",
+      "signingIn": "Signing in...",
+      "orContinueWith": "Or continue with",
+      "googleButton": "Sign in with Google"
+    },
+    "signup": {
+      "title": "Create Account",
+      "description": "Sign up to start downloading videos",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "password": "Password",
+      "passwordPlaceholder": "••••••••",
+      "passwordHint": "At least 6 characters",
+      "confirmPassword": "Confirm Password",
+      "button": "Create Account",
+      "creatingAccount": "Creating account..."
+    },
+    "tabs": {
+      "login": "Login",
+      "signup": "Sign Up"
+    },
+    "errors": {
+      "invalidCredential": "Invalid email or password",
+      "userNotFound": "No account found with this email",
+      "wrongPassword": "Invalid password",
+      "emailInUse": "An account with this email already exists",
+      "invalidEmail": "Invalid email address",
+      "weakPassword": "Password is too weak",
+      "passwordMismatch": "Passwords do not match",
+      "passwordTooShort": "Password must be at least 6 characters",
+      "generic": "Failed to sign in"
+    },
+    "success": {
+      "loggedIn": "Successfully signed in!",
+      "accountCreated": "Account created! Please check your email to verify your account.",
+      "passwordResetSent": "Password reset email sent! Check your inbox.",
+      "verificationSent": "Verification email sent! Check your inbox."
+    },
+    "reset": {
+      "title": "Reset Password",
+      "description": "Enter your email to receive a password reset link",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "hint": "We'll send you a link to reset your password",
+      "button": "Send Reset Link",
+      "sending": "Sending...",
+      "backToLogin": "Back to login",
+      "forgotPassword": "Forgot password?"
+    },
+    "verification": {
+      "warning": "Please verify your email address",
+      "checkInbox": "Check your inbox for the verification email.",
+      "spamHint": "Don't forget to check your spam folder!",
+      "resendButton": "Resend Verification Email",
+      "sending": "Sending..."
+    }
   }
 }

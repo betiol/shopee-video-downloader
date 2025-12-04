@@ -8,6 +8,7 @@ import "./globals.css";
 import StructuredData from "@/components/structured-data";
 import { routing } from "@/i18n/routing";
 import { AuthProvider } from "@/components/auth-provider";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -158,6 +159,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <NextIntlClientProvider messages={messages}>
           <AuthProvider>
             {children}
+            <Toaster />
           </AuthProvider>
         </NextIntlClientProvider>
         <Script

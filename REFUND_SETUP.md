@@ -144,3 +144,4 @@ Se houver problemas com o sistema de refund:
 3. Verifique os dados no Firebase
 4. Teste o webhook manualmente com Stripe CLI
 
+

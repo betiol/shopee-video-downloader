@@ -17,7 +17,7 @@ import Footer from "@/components/footer";
 import AdSenseAd from "@/components/adsense-ad";
 import { UserMenu } from "@/components/user-menu";
 import { useAuth } from "@/components/auth-provider";
-import { LoginModal } from "@/components/login-modal";
+import { AuthModal } from "@/components/auth-modal";
 import { UpgradeModal } from "@/components/upgrade-modal";
 
 export default function Home() {
@@ -118,7 +118,7 @@ export default function Home() {
         <LanguageSwitcher />
         <UserMenu />
       </div>
-      <LoginModal open={loginOpen} onOpenChange={setLoginOpen} />
+      <AuthModal open={loginOpen} onOpenChange={setLoginOpen} />
       <UpgradeModal open={upgradeOpen} onOpenChange={setUpgradeOpen} onUpgrade={handleUpgrade} />
       <main className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-purple-50">
         {/* Hero Section */}
