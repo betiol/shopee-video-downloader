@@ -32,7 +32,8 @@ export function UserMenu() {
     const [refundDialogOpen, setRefundDialogOpen] = useState(false);
     const [refundLoading, setRefundLoading] = useState(false);
     const [refundMessage, setRefundMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
-    const t = useTranslations();
+    const t = useTranslations("userMenu");
+    const tRefund = useTranslations("refund");
 
     const handleUpgrade = async () => {
         setCheckoutLoading(true);
@@ -71,21 +72,21 @@ export function UserMenu() {
             const data = await response.json();
 
             if (response.ok) {
-                setRefundMessage({ type: "success", text: t("refund.success") });
+                setRefundMessage({ type: "success", text: tRefund("success") });
                 // Refresh the page after 3 seconds to update user status
                 setTimeout(() => {
                     window.location.reload();
                 }, 3000);
             } else {
                 if (data.error === "Refund already requested") {
-                    setRefundMessage({ type: "error", text: t("refund.alreadyRequested") });
+                    setRefundMessage({ type: "error", text: tRefund("alreadyRequested") });
                 } else {
-                    setRefundMessage({ type: "error", text: t("refund.error") });
+                    setRefundMessage({ type: "error", text: tRefund("error") });
                 }
             }
         } catch (error) {
             console.error("Refund failed:", error);
-            setRefundMessage({ type: "error", text: t("refund.error") });
+            setRefundMessage({ type: "error", text: tRefund("error") });
         } finally {
             setRefundLoading(false);
         }
@@ -110,7 +111,7 @@ export function UserMenu() {
         <div className="flex items-center gap-4">
             {!isPremium && (
                 <div className="hidden md:flex items-center gap-2 text-sm text-muted-foreground">
-                    <span>Daily Usage: {usage}/5</span>
+                    <span>{t("dailyUsage", { usage })}</span>
                     <Button
                         onClick={() => setUpgradeOpen(true)}
                         size="sm"

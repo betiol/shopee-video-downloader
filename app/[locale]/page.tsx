@@ -28,6 +28,8 @@ export default function Home() {
   const tAbout = useTranslations("about");
   const tMobile = useTranslations("mobile");
   const tDesktop = useTranslations("desktop");
+  const tTips = useTranslations("tips");
+  const tEducation = useTranslations("education");
 
   const [url, setUrl] = useState("");
   const [videoUrl, setVideoUrl] = useState("");
@@ -325,19 +327,19 @@ export default function Home() {
         <section className="py-16 px-4 bg-white/50">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-foreground">
-              Tips for Downloading Shopee Videos
+              {tTips("title")}
             </h2>
             <div className="space-y-6">
               <Card className="border-purple-100 shadow-lg">
                 <CardContent className="p-6">
                   <h3 className="text-xl font-semibold mb-3 text-foreground">
-                    1. Understanding Video Quality
+                    {tTips("quality.title")}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed mb-4">
-                    When downloading videos from Shopee, it&apos;s important to understand that the quality of the downloaded video will match the original upload quality. Shopee typically hosts videos in various resolutions, and our downloader retrieves the highest quality available. For the best results, ensure you&apos;re downloading videos that were originally uploaded in high definition (HD) or Full HD quality.
+                    {tTips("quality.p1")}
                   </p>
                   <p className="text-muted-foreground leading-relaxed">
-                    The video quality can significantly impact your content creation, marketing efforts, or personal archiving needs. Always preview the video before downloading to ensure it meets your quality requirements.
+                    {tTips("quality.p2")}
                   </p>
                 </CardContent>
               </Card>
@@ -345,27 +347,27 @@ export default function Home() {
               <Card className="border-purple-100 shadow-lg">
                 <CardContent className="p-6">
                   <h3 className="text-xl font-semibold mb-3 text-foreground">
-                    2. Legal and Ethical Considerations
+                    {tTips("legal.title")}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed mb-4">
-                    While our tool makes it easy to download Shopee videos, it&apos;s crucial to respect copyright laws and intellectual property rights. Videos on Shopee are created by sellers and content creators who own the rights to their content. Here are some important guidelines:
+                    {tTips("legal.p1")}
                   </p>
                   <ul className="space-y-2 text-muted-foreground">
                     <li className="flex gap-3">
                       <span className="text-primary mt-1">•</span>
-                      <span>Only download videos for personal use, education, or with explicit permission from the content owner</span>
+                      <span>{tTips("legal.list.l1")}</span>
                     </li>
                     <li className="flex gap-3">
                       <span className="text-primary mt-1">•</span>
-                      <span>Never redistribute downloaded videos without proper authorization</span>
+                      <span>{tTips("legal.list.l2")}</span>
                     </li>
                     <li className="flex gap-3">
                       <span className="text-primary mt-1">•</span>
-                      <span>Respect the creator&apos;s work and give proper attribution when using their content</span>
+                      <span>{tTips("legal.list.l3")}</span>
                     </li>
                     <li className="flex gap-3">
                       <span className="text-primary mt-1">•</span>
-                      <span>Consider contacting the video owner directly for commercial use permissions</span>
+                      <span>{tTips("legal.list.l4")}</span>
                     </li>
                   </ul>
                 </CardContent>
@@ -374,27 +376,27 @@ export default function Home() {
               <Card className="border-purple-100 shadow-lg">
                 <CardContent className="p-6">
                   <h3 className="text-xl font-semibold mb-3 text-foreground">
-                    3. Optimizing Download Speed
+                    {tTips("speed.title")}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed mb-4">
-                    Download speeds can vary based on several factors. To ensure the fastest and most reliable downloads, consider these optimization tips:
+                    {tTips("speed.p1")}
                   </p>
                   <ul className="space-y-2 text-muted-foreground">
                     <li className="flex gap-3">
                       <span className="text-primary mt-1">•</span>
-                      <span>Use a stable internet connection - WiFi or wired connections typically offer better stability than mobile data</span>
+                      <span>{tTips("speed.list.l1")}</span>
                     </li>
                     <li className="flex gap-3">
                       <span className="text-primary mt-1">•</span>
-                      <span>Close unnecessary browser tabs and applications to free up bandwidth</span>
+                      <span>{tTips("speed.list.l2")}</span>
                     </li>
                     <li className="flex gap-3">
                       <span className="text-primary mt-1">•</span>
-                      <span>Download videos during off-peak hours for potentially faster speeds</span>
+                      <span>{tTips("speed.list.l3")}</span>
                     </li>
                     <li className="flex gap-3">
                       <span className="text-primary mt-1">•</span>
-                      <span>Clear your browser cache regularly to maintain optimal performance</span>
+                      <span>{tTips("speed.list.l4")}</span>
                     </li>
                   </ul>
                 </CardContent>
@@ -403,27 +405,27 @@ export default function Home() {
               <Card className="border-purple-100 shadow-lg">
                 <CardContent className="p-6">
                   <h3 className="text-xl font-semibold mb-3 text-foreground">
-                    4. File Management and Organization
+                    {tTips("management.title")}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed mb-4">
-                    Proper file management is essential when downloading multiple videos. Here are some best practices to keep your downloads organized:
+                    {tTips("management.p1")}
                   </p>
                   <ul className="space-y-2 text-muted-foreground">
                     <li className="flex gap-3">
                       <span className="text-primary mt-1">•</span>
-                      <span>Create a dedicated folder structure for Shopee videos on your device</span>
+                      <span>{tTips("management.list.l1")}</span>
                     </li>
                     <li className="flex gap-3">
                       <span className="text-primary mt-1">•</span>
-                      <span>Rename downloaded files with descriptive names that include product details or dates</span>
+                      <span>{tTips("management.list.l2")}</span>
                     </li>
                     <li className="flex gap-3">
                       <span className="text-primary mt-1">•</span>
-                      <span>Consider using cloud storage for backup and easy access across devices</span>
+                      <span>{tTips("management.list.l3")}</span>
                     </li>
                     <li className="flex gap-3">
                       <span className="text-primary mt-1">•</span>
-                      <span>Regularly review and clean up your downloaded videos to save storage space</span>
+                      <span>{tTips("management.list.l4")}</span>
                     </li>
                   </ul>
                 </CardContent>
@@ -432,27 +434,27 @@ export default function Home() {
               <Card className="border-purple-100 shadow-lg">
                 <CardContent className="p-6">
                   <h3 className="text-xl font-semibold mb-3 text-foreground">
-                    5. Troubleshooting Common Issues
+                    {tTips("troubleshooting.title")}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed mb-4">
-                    If you encounter problems while downloading Shopee videos, try these troubleshooting steps:
+                    {tTips("troubleshooting.p1")}
                   </p>
                   <ul className="space-y-2 text-muted-foreground">
                     <li className="flex gap-3">
                       <span className="text-primary mt-1">•</span>
-                      <span><strong>Download fails:</strong> Verify the URL is correct and the video is still available on Shopee</span>
+                      <span dangerouslySetInnerHTML={{ __html: tTips.raw("troubleshooting.list.l1") }} />
                     </li>
                     <li className="flex gap-3">
                       <span className="text-primary mt-1">•</span>
-                      <span><strong>Slow downloads:</strong> Check your internet connection speed and try again later</span>
+                      <span dangerouslySetInnerHTML={{ __html: tTips.raw("troubleshooting.list.l2") }} />
                     </li>
                     <li className="flex gap-3">
                       <span className="text-primary mt-1">•</span>
-                      <span><strong>Video won&apos;t play:</strong> Ensure you have a compatible media player installed</span>
+                      <span dangerouslySetInnerHTML={{ __html: tTips.raw("troubleshooting.list.l3") }} />
                     </li>
                     <li className="flex gap-3">
                       <span className="text-primary mt-1">•</span>
-                      <span><strong>Browser issues:</strong> Try clearing cookies and cache, or use a different browser</span>
+                      <span dangerouslySetInnerHTML={{ __html: tTips.raw("troubleshooting.list.l4") }} />
                     </li>
                   </ul>
                 </CardContent>
@@ -497,22 +499,22 @@ export default function Home() {
         <section className="py-16 px-4 bg-white/50">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-foreground">
-              Understanding Shopee Video Content
+              {tEducation("title")}
             </h2>
             <div className="space-y-6">
               <Card className="border-purple-100 shadow-lg">
                 <CardContent className="p-8">
                   <h3 className="text-2xl font-bold mb-4 text-foreground">
-                    Why Shopee Videos Matter for E-commerce
+                    {tEducation("ecommerce.title")}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed mb-4">
-                    Shopee has revolutionized online shopping by integrating video content into product listings. Videos provide customers with a more comprehensive view of products, showcasing features, dimensions, and real-life applications that static images cannot convey. This visual medium has become essential for modern e-commerce, leading to increased customer engagement and higher conversion rates.
+                    {tEducation("ecommerce.p1")}
                   </p>
                   <p className="text-muted-foreground leading-relaxed mb-4">
-                    For sellers, product videos are invaluable marketing tools that can demonstrate product features, build trust, and differentiate their offerings from competitors. Studies show that listings with videos receive up to 80% more engagement than those without, making video content a crucial component of successful online selling strategies.
+                    {tEducation("ecommerce.p2")}
                   </p>
                   <p className="text-muted-foreground leading-relaxed">
-                    For buyers and content creators, the ability to download and reference these videos can be useful for product comparisons, reviews, or educational content creation. Our tool facilitates this process while maintaining the original video quality.
+                    {tEducation("ecommerce.p3")}
                   </p>
                 </CardContent>
               </Card>
@@ -520,34 +522,34 @@ export default function Home() {
               <Card className="border-purple-100 shadow-lg">
                 <CardContent className="p-8">
                   <h3 className="text-2xl font-bold mb-4 text-foreground">
-                    Video Formats and Compatibility
+                    {tEducation("formats.title")}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed mb-4">
-                    Our Shopee Video Downloader delivers videos in MP4 format, which is universally compatible with virtually all devices and media players. MP4 (MPEG-4 Part 14) is an industry-standard digital multimedia container format that offers excellent compression while maintaining high video quality.
+                    {tEducation("formats.p1")}
                   </p>
                   <p className="text-muted-foreground leading-relaxed mb-4">
-                    The downloaded MP4 files can be played on:
+                    {tEducation("formats.p2")}
                   </p>
                   <ul className="space-y-2 text-muted-foreground mb-4">
                     <li className="flex gap-3">
                       <span className="text-primary mt-1">•</span>
-                      <span><strong>Desktop computers:</strong> Windows Media Player, VLC, QuickTime, and most web browsers</span>
+                      <span dangerouslySetInnerHTML={{ __html: tEducation.raw("formats.list.l1") }} />
                     </li>
                     <li className="flex gap-3">
                       <span className="text-primary mt-1">•</span>
-                      <span><strong>Mobile devices:</strong> iOS (iPhone/iPad) and Android smartphones and tablets</span>
+                      <span dangerouslySetInnerHTML={{ __html: tEducation.raw("formats.list.l2") }} />
                     </li>
                     <li className="flex gap-3">
                       <span className="text-primary mt-1">•</span>
-                      <span><strong>Smart TVs:</strong> Most modern smart TV platforms support MP4 playback</span>
+                      <span dangerouslySetInnerHTML={{ __html: tEducation.raw("formats.list.l3") }} />
                     </li>
                     <li className="flex gap-3">
                       <span className="text-primary mt-1">•</span>
-                      <span><strong>Gaming consoles:</strong> PlayStation, Xbox, and other entertainment systems</span>
+                      <span dangerouslySetInnerHTML={{ __html: tEducation.raw("formats.list.l4") }} />
                     </li>
                   </ul>
                   <p className="text-muted-foreground leading-relaxed">
-                    This universal compatibility ensures that you can view your downloaded Shopee videos on any device without needing special conversion tools or software.
+                    {tEducation("formats.p3")}
                   </p>
                 </CardContent>
               </Card>
@@ -555,31 +557,31 @@ export default function Home() {
               <Card className="border-purple-100 shadow-lg">
                 <CardContent className="p-8">
                   <h3 className="text-2xl font-bold mb-4 text-foreground">
-                    Privacy and Security
+                    {tEducation("privacy.title")}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed mb-4">
-                    We take your privacy and security seriously. Our Shopee Video Downloader operates with the following privacy principles:
+                    {tEducation("privacy.p1")}
                   </p>
                   <ul className="space-y-3 text-muted-foreground mb-4">
                     <li className="flex gap-3">
                       <span className="text-primary mt-1">•</span>
-                      <span><strong>No data storage:</strong> We do not store any video URLs or downloaded content on our servers. All processing happens in real-time.</span>
+                      <span dangerouslySetInnerHTML={{ __html: tEducation.raw("privacy.list.l1") }} />
                     </li>
                     <li className="flex gap-3">
                       <span className="text-primary mt-1">•</span>
-                      <span><strong>No registration required:</strong> You can use our service without creating an account or providing personal information.</span>
+                      <span dangerouslySetInnerHTML={{ __html: tEducation.raw("privacy.list.l2") }} />
                     </li>
                     <li className="flex gap-3">
                       <span className="text-primary mt-1">•</span>
-                      <span><strong>Secure connections:</strong> All data transfers are encrypted using industry-standard SSL/TLS protocols.</span>
+                      <span dangerouslySetInnerHTML={{ __html: tEducation.raw("privacy.list.l3") }} />
                     </li>
                     <li className="flex gap-3">
                       <span className="text-primary mt-1">•</span>
-                      <span><strong>No tracking:</strong> We do not track your download history or create user profiles based on your activity.</span>
+                      <span dangerouslySetInnerHTML={{ __html: tEducation.raw("privacy.list.l4") }} />
                     </li>
                   </ul>
                   <p className="text-muted-foreground leading-relaxed">
-                    Your privacy is paramount, and we are committed to maintaining a transparent and secure service that respects user confidentiality.
+                    {tEducation("privacy.p2")}
                   </p>
                 </CardContent>
               </Card>

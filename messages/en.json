@@ -347,6 +347,89 @@
       "spamHint": "Don't forget to check your spam folder!",
       "resendButton": "Resend Verification Email",
       "sending": "Sending..."
+    },
+    "userMenu": {
+      "dailyUsage": "Daily Usage: {usage}/5"
+    },
+    "tips": {
+      "title": "Tips for Downloading Shopee Videos",
+      "quality": {
+        "title": "1. Understanding Video Quality",
+        "p1": "When downloading videos from Shopee, it's important to understand that the quality of the downloaded video will match the original upload quality. Shopee typically hosts videos in various resolutions, and our downloader retrieves the highest quality available. For the best results, ensure you're downloading videos that were originally uploaded in high definition (HD) or Full HD quality.",
+        "p2": "The video quality can significantly impact your content creation, marketing efforts, or personal archiving needs. Always preview the video before downloading to ensure it meets your quality requirements."
+      },
+      "legal": {
+        "title": "2. Legal and Ethical Considerations",
+        "p1": "While our tool makes it easy to download Shopee videos, it's crucial to respect copyright laws and intellectual property rights. Videos on Shopee are created by sellers and content creators who own the rights to their content. Here are some important guidelines:",
+        "list": {
+          "l1": "Only download videos for personal use, education, or with explicit permission from the content owner",
+          "l2": "Never redistribute downloaded videos without proper authorization",
+          "l3": "Respect the creator's work and give proper attribution when using their content",
+          "l4": "Consider contacting the video owner directly for commercial use permissions"
+        }
+      },
+      "speed": {
+        "title": "3. Optimizing Download Speed",
+        "p1": "Download speeds can vary based on several factors. To ensure the fastest and most reliable downloads, consider these optimization tips:",
+        "list": {
+          "l1": "Use a stable internet connection - WiFi or wired connections typically offer better stability than mobile data",
+          "l2": "Close unnecessary browser tabs and applications to free up bandwidth",
+          "l3": "Download videos during off-peak hours for potentially faster speeds",
+          "l4": "Clear your browser cache regularly to maintain optimal performance"
+        }
+      },
+      "management": {
+        "title": "4. File Management and Organization",
+        "p1": "Proper file management is essential when downloading multiple videos. Here are some best practices to keep your downloads organized:",
+        "list": {
+          "l1": "Create a dedicated folder structure for Shopee videos on your device",
+          "l2": "Rename downloaded files with descriptive names that include product details or dates",
+          "l3": "Consider using cloud storage for backup and easy access across devices",
+          "l4": "Regularly review and clean up your downloaded videos to save storage space"
+        }
+      },
+      "troubleshooting": {
+        "title": "5. Troubleshooting Common Issues",
+        "p1": "If you encounter problems while downloading Shopee videos, try these troubleshooting steps:",
+        "list": {
+          "l1": "<strong>Download fails:</strong> Verify the URL is correct and the video is still available on Shopee",
+          "l2": "<strong>Slow downloads:</strong> Check your internet connection speed and try again later",
+          "l3": "<strong>Video won't play:</strong> Ensure you have a compatible media player installed",
+          "l4": "<strong>Browser issues:</strong> Try clearing cookies and cache, or use a different browser"
+        }
+      }
+    },
+    "education": {
+      "title": "Understanding Shopee Video Content",
+      "ecommerce": {
+        "title": "Why Shopee Videos Matter for E-commerce",
+        "p1": "Shopee has revolutionized online shopping by integrating video content into product listings. Videos provide customers with a more comprehensive view of products, showcasing features, dimensions, and real-life applications that static images cannot convey. This visual medium has become essential for modern e-commerce, leading to increased customer engagement and higher conversion rates.",
+        "p2": "For sellers, product videos are invaluable marketing tools that can demonstrate product features, build trust, and differentiate their offerings from competitors. Studies show that listings with videos receive up to 80% more engagement than those without, making video content a crucial component of successful online selling strategies.",
+        "p3": "For buyers and content creators, the ability to download and reference these videos can be useful for product comparisons, reviews, or educational content creation. Our tool facilitates this process while maintaining the original video quality."
+      },
+      "formats": {
+        "title": "Video Formats and Compatibility",
+        "p1": "Our Shopee Video Downloader delivers videos in MP4 format, which is universally compatible with virtually all devices and media players. MP4 (MPEG-4 Part 14) is an industry-standard digital multimedia container format that offers excellent compression while maintaining high video quality.",
+        "p2": "The downloaded MP4 files can be played on:",
+        "list": {
+          "l1": "<strong>Desktop computers:</strong> Windows Media Player, VLC, QuickTime, and most web browsers",
+          "l2": "<strong>Mobile devices:</strong> iOS (iPhone/iPad) and Android smartphones and tablets",
+          "l3": "<strong>Smart TVs:</strong> Most modern smart TV platforms support MP4 playback",
+          "l4": "<strong>Gaming consoles:</strong> PlayStation, Xbox, and other entertainment systems"
+        },
+        "p3": "This universal compatibility ensures that you can view your downloaded Shopee videos on any device without needing special conversion tools or software."
+      },
+      "privacy": {
+        "title": "Privacy and Security",
+        "p1": "We take your privacy and security seriously. Our Shopee Video Downloader operates with the following privacy principles:",
+        "list": {
+          "l1": "<strong>No data storage:</strong> We do not store any video URLs or downloaded content on our servers. All processing happens in real-time.",
+          "l2": "<strong>No registration required:</strong> You can use our service without creating an account or providing personal information.",
+          "l3": "<strong>Secure connections:</strong> All data transfers are encrypted using industry-standard SSL/TLS protocols.",
+          "l4": "<strong>No tracking:</strong> We do not track your download history or create user profiles based on your activity."
+        },
+        "p2": "Your privacy is paramount, and we are committed to maintaining a transparent and secure service that respects user confidentiality."
+      }
     }
   }
 }

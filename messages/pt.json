@@ -347,6 +347,89 @@
       "spamHint": "Não esqueça de verificar sua caixa de spam!",
       "resendButton": "Reenviar Email de Verificação",
       "sending": "Enviando..."
+    },
+    "userMenu": {
+      "dailyUsage": "Uso Diário: {usage}/5"
+    },
+    "tips": {
+      "title": "Dicas para Baixar Vídeos da Shopee",
+      "quality": {
+        "title": "1. Entendendo a Qualidade do Vídeo",
+        "p1": "Ao baixar vídeos da Shopee, é importante entender que a qualidade do vídeo baixado corresponderá à qualidade original do upload. A Shopee geralmente hospeda vídeos em várias resoluções, e nosso downloader recupera a maior qualidade disponível. Para melhores resultados, certifique-se de baixar vídeos que foram originalmente enviados em alta definição (HD) ou Full HD.",
+        "p2": "A qualidade do vídeo pode impactar significativamente sua criação de conteúdo, esforços de marketing ou necessidades de arquivamento pessoal. Sempre visualize o vídeo antes de baixar para garantir que atenda aos seus requisitos de qualidade."
+      },
+      "legal": {
+        "title": "2. Considerações Legais e Éticas",
+        "p1": "Embora nossa ferramenta facilite o download de vídeos da Shopee, é crucial respeitar as leis de direitos autorais e propriedade intelectual. Os vídeos na Shopee são criados por vendedores e criadores de conteúdo que possuem os direitos sobre seu conteúdo. Aqui estão algumas diretrizes importantes:",
+        "list": {
+          "l1": "Baixe vídeos apenas para uso pessoal, educacional ou com permissão explícita do proprietário do conteúdo",
+          "l2": "Nunca redistribua vídeos baixados sem a devida autorização",
+          "l3": "Respeite o trabalho do criador e dê a devida atribuição ao usar seu conteúdo",
+          "l4": "Considere entrar em contato diretamente com o proprietário do vídeo para permissões de uso comercial"
+        }
+      },
+      "speed": {
+        "title": "3. Otimizando a Velocidade de Download",
+        "p1": "As velocidades de download podem variar com base em vários fatores. Para garantir os downloads mais rápidos e confiáveis, considere estas dicas de otimização:",
+        "list": {
+          "l1": "Use uma conexão de internet estável - WiFi ou conexões cabeadas geralmente oferecem melhor estabilidade que dados móveis",
+          "l2": "Feche abas e aplicativos desnecessários do navegador para liberar largura de banda",
+          "l3": "Baixe vídeos fora dos horários de pico para velocidades potencialmente mais rápidas",
+          "l4": "Limpe o cache do seu navegador regularmente para manter o desempenho ideal"
+        }
+      },
+      "management": {
+        "title": "4. Gerenciamento e Organização de Arquivos",
+        "p1": "O gerenciamento adequado de arquivos é essencial ao baixar vários vídeos. Aqui estão algumas práticas recomendadas para manter seus downloads organizados:",
+        "list": {
+          "l1": "Crie uma estrutura de pastas dedicada para vídeos da Shopee no seu dispositivo",
+          "l2": "Renomeie os arquivos baixados com nomes descritivos que incluam detalhes do produto ou datas",
+          "l3": "Considere usar armazenamento em nuvem para backup e fácil acesso em vários dispositivos",
+          "l4": "Revise e limpe regularmente seus vídeos baixados para economizar espaço de armazenamento"
+        }
+      },
+      "troubleshooting": {
+        "title": "5. Solução de Problemas Comuns",
+        "p1": "Se você encontrar problemas ao baixar vídeos da Shopee, tente estas etapas de solução de problemas:",
+        "list": {
+          "l1": "<strong>Falha no download:</strong> Verifique se a URL está correta e se o vídeo ainda está disponível na Shopee",
+          "l2": "<strong>Downloads lentos:</strong> Verifique a velocidade da sua conexão com a internet e tente novamente mais tarde",
+          "l3": "<strong>Vídeo não reproduz:</strong> Certifique-se de ter um reprodutor de mídia compatível instalado",
+          "l4": "<strong>Problemas no navegador:</strong> Tente limpar cookies e cache, ou use um navegador diferente"
+        }
+      }
+    },
+    "education": {
+      "title": "Entendendo o Conteúdo de Vídeo da Shopee",
+      "ecommerce": {
+        "title": "Por que os Vídeos da Shopee Importam para o E-commerce",
+        "p1": "A Shopee revolucionou as compras online integrando conteúdo de vídeo nas listagens de produtos. Os vídeos fornecem aos clientes uma visão mais abrangente dos produtos, mostrando características, dimensões e aplicações da vida real que imagens estáticas não conseguem transmitir. Este meio visual tornou-se essencial para o e-commerce moderno, levando a um maior engajamento do cliente e taxas de conversão mais altas.",
+        "p2": "Para vendedores, vídeos de produtos são ferramentas de marketing inestimáveis que podem demonstrar características do produto, construir confiança e diferenciar suas ofertas dos concorrentes. Estudos mostram que listagens com vídeos recebem até 80% mais engajamento do que aquelas sem, tornando o conteúdo de vídeo um componente crucial de estratégias de vendas online bem-sucedidas.",
+        "p3": "Para compradores e criadores de conteúdo, a capacidade de baixar e referenciar esses vídeos pode ser útil para comparações de produtos, avaliações ou criação de conteúdo educacional. Nossa ferramenta facilita esse processo mantendo a qualidade original do vídeo."
+      },
+      "formats": {
+        "title": "Formatos de Vídeo e Compatibilidade",
+        "p1": "Nosso Shopee Video Downloader entrega vídeos no formato MP4, que é universalmente compatível com praticamente todos os dispositivos e reprodutores de mídia. MP4 (MPEG-4 Part 14) é um formato de contêiner multimídia digital padrão da indústria que oferece excelente compressão mantendo alta qualidade de vídeo.",
+        "p2": "Os arquivos MP4 baixados podem ser reproduzidos em:",
+        "list": {
+          "l1": "<strong>Computadores desktop:</strong> Windows Media Player, VLC, QuickTime e a maioria dos navegadores web",
+          "l2": "<strong>Dispositivos móveis:</strong> iOS (iPhone/iPad) e smartphones e tablets Android",
+          "l3": "<strong>Smart TVs:</strong> A maioria das plataformas modernas de smart TV suporta reprodução de MP4",
+          "l4": "<strong>Consoles de jogos:</strong> PlayStation, Xbox e outros sistemas de entretenimento"
+        },
+        "p3": "Essa compatibilidade universal garante que você possa visualizar seus vídeos baixados da Shopee em qualquer dispositivo sem precisar de ferramentas de conversão ou software especial."
+      },
+      "privacy": {
+        "title": "Privacidade e Segurança",
+        "p1": "Levamos sua privacidade e segurança a sério. Nosso Shopee Video Downloader opera com os seguintes princípios de privacidade:",
+        "list": {
+          "l1": "<strong>Sem armazenamento de dados:</strong> Não armazenamos URLs de vídeo ou conteúdo baixado em nossos servidores. Todo o processamento acontece em tempo real.",
+          "l2": "<strong>Sem registro necessário:</strong> Você pode usar nosso serviço sem criar uma conta ou fornecer informações pessoais.",
+          "l3": "<strong>Conexões seguras:</strong> Todas as transferências de dados são criptografadas usando protocolos SSL/TLS padrão da indústria.",
+          "l4": "<strong>Sem rastreamento:</strong> Não rastreamos seu histórico de downloads nem criamos perfis de usuário com base em sua atividade."
+        },
+        "p2": "Sua privacidade é primordial, e estamos comprometidos em manter um serviço transparente e seguro que respeita a confidencialidade do usuário."
+      }
     }
   }
 }
