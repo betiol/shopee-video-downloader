@@ -249,7 +249,7 @@
   "upgradeModal": {
     "title": "Upgrade para Premium",
     "description": "Desbloqueie downloads ilimitados por apenas",
-    "price": "R$50",
+    "price": "R$30",
     "oneTime": "Pagamento único • Acesso vitalício",
     "features": {
       "unlimited": {

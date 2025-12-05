@@ -249,7 +249,7 @@
   "upgradeModal": {
     "title": "Upgrade to Premium",
     "description": "Unlock unlimited downloads for only",
-    "price": "R$50",
+    "price": "R$30",
     "oneTime": "One-time payment • Lifetime access",
     "features": {
       "unlimited": {
