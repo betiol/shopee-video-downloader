@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
 import { adminAuth, adminDb } from "@/lib/firebase-admin";
+import { sendThankYouEmail } from "@/lib/send-email";
 
 export async function POST(request: NextRequest) {
     try {
@@ -47,6 +48,17 @@ export async function POST(request: NextRequest) {
             await adminDb.ref(`users/${userId}`).update(updateData);
 
             console.log(`✅ User ${userId} upgraded to premium via verify endpoint`);
+
+            // Send thank you email asynchronously
+            if (session.customer_email) {
+                sendThankYouEmail({
+                    to: session.customer_email,
+                    userName: session.customer_details?.name || undefined,
+                }).catch((error) => {
+                    console.error("❌ Failed to send thank you email:", error);
+                });
+                console.log(`📧 Thank you email queued for ${session.customer_email}`);
+            }
 
             return NextResponse.json({ 
                 success: true, 

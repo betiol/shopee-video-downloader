@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
 import { adminDb } from "@/lib/firebase-admin";
+import { sendThankYouEmail } from "@/lib/send-email";
 import Stripe from "stripe";
 
 export async function POST(request: NextRequest) {
@@ -75,6 +76,18 @@ export async function POST(request: NextRequest) {
                 paymentIntentId: paymentIntentId || 'N/A',
                 sessionId: session.id,
             });
+
+            // Send thank you email asynchronously (don't wait for it)
+            if (session.customer_email) {
+                sendThankYouEmail({
+                    to: session.customer_email,
+                    userName: session.customer_details?.name || undefined,
+                }).catch((error) => {
+                    console.error("❌ Failed to send thank you email:", error);
+                    // Don't throw - we don't want email failures to affect the webhook
+                });
+                console.log(`📧 Thank you email queued for ${session.customer_email}`);
+            }
         } catch (error: any) {
             console.error(`❌ Error updating user ${userId}:`, error.message);
             return NextResponse.json({ received: true, error: error.message });

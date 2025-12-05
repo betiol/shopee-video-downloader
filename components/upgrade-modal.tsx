@@ -99,17 +99,6 @@ export function UpgradeModal({ open, onOpenChange, onUpgrade }: UpgradeModalProp
                             </div>
                         </div>
 
-                        <div className="flex items-start gap-3">
-                            <div className="p-1 bg-green-100 rounded-full mt-0.5">
-                                <Check className="h-4 w-4 text-green-600" />
-                            </div>
-                            <div>
-                                <p className="font-semibold">{t("features.support.title")}</p>
-                                <p className="text-sm text-muted-foreground">
-                                    {t("features.support.description")}
-                                </p>
-                            </div>
-                        </div>
                     </div>
 
                     {/* CTA Button */}
