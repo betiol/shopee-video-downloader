@@ -1,6 +1,7 @@
 import { getResend } from "./resend";
 import { render } from "@react-email/render";
 import ThankYouEmail from "@/emails/thank-you-email";
+import * as React from "react";
 
 interface SendThankYouEmailParams {
     to: string;
@@ -10,7 +11,9 @@ interface SendThankYouEmailParams {
 export async function sendThankYouEmail({ to, userName }: SendThankYouEmailParams) {
     try {
         const resend = getResend();
-        const emailHtml = await render(ThankYouEmail({ userEmail: to, userName }));
+        const emailHtml = await render(
+            React.createElement(ThankYouEmail, { userEmail: to, userName })
+        );
 
         const { data, error } = await resend.emails.send({
             from: process.env.RESEND_FROM_EMAIL || "Shopee Video Downloader <onboarding@resend.dev>",
