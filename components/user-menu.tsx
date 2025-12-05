@@ -32,7 +32,7 @@ export function UserMenu() {
     const [refundDialogOpen, setRefundDialogOpen] = useState(false);
     const [refundLoading, setRefundLoading] = useState(false);
     const [refundMessage, setRefundMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
-    const t = useTranslations("userMenu");
+    const t = useTranslations("auth");
     const tRefund = useTranslations("refund");
 
     const handleUpgrade = async () => {
@@ -111,7 +111,7 @@ export function UserMenu() {
         <div className="flex items-center gap-4">
             {!isPremium && (
                 <div className="hidden md:flex items-center gap-2 text-sm text-muted-foreground">
-                    <span>{t("dailyUsage", { usage })}</span>
+                    <span>{t("userMenu.dailyUsage", { usage })}</span>
                     <Button
                         onClick={() => setUpgradeOpen(true)}
                         size="sm"
@@ -161,7 +161,7 @@ export function UserMenu() {
                     {isPremium && (
                         <DropdownMenuItem onClick={() => setRefundDialogOpen(true)}>
                             <RefreshCcw className="mr-2 h-4 w-4 text-red-500" />
-                            {t("refund.button")}
+                            {tRefund("button")}
                         </DropdownMenuItem>
                     )}
                     <DropdownMenuItem onClick={() => logout()}>
@@ -180,9 +180,9 @@ export function UserMenu() {
             <Dialog open={refundDialogOpen} onOpenChange={setRefundDialogOpen}>
                 <DialogContent>
                     <DialogHeader>
-                        <DialogTitle>{t("refund.confirmTitle")}</DialogTitle>
+                        <DialogTitle>{tRefund("confirmTitle")}</DialogTitle>
                         <DialogDescription>
-                            {t("refund.confirmMessage")}
+                            {tRefund("confirmMessage")}
                         </DialogDescription>
                     </DialogHeader>
                     {refundMessage && (
@@ -201,7 +201,7 @@ export function UserMenu() {
                             onClick={() => setRefundDialogOpen(false)}
                             disabled={refundLoading}
                         >
-                            {t("refund.cancel")}
+                            {tRefund("cancel")}
                         </Button>
                         <Button
                             variant="destructive"
@@ -211,10 +211,10 @@ export function UserMenu() {
                             {refundLoading ? (
                                 <>
                                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                    {t("refund.processing")}
+                                    {tRefund("processing")}
                                 </>
                             ) : (
-                                t("refund.confirm")
+                                tRefund("confirm")
                             )}
                         </Button>
                     </DialogFooter>
