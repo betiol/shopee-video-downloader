@@ -58,11 +58,14 @@ export async function POST(request: NextRequest) {
     const isPremium = userData.isPremium;
 
     // Store usage info for later increment (only after success)
+    const today = new Date().toISOString().split("T")[0];
     let usageRef = null;
     let currentUsage = 0;
+    let premiumDownloadsRef = null;
+    let totalPremiumDownloads = 0;
 
     if (!isPremium) {
-      const today = new Date().toISOString().split("T")[0];
+      // Free users: daily limit
       usageRef = userRef.child(`usage/${today}`);
       const usageSnapshot = await usageRef.once("value");
       currentUsage = usageSnapshot.val() || 0;
@@ -76,6 +79,11 @@ export async function POST(request: NextRequest) {
           { status: 403 }
         );
       }
+    } else {
+      // Premium users: track total downloads
+      premiumDownloadsRef = userRef.child('premiumDownloads');
+      const premiumSnapshot = await premiumDownloadsRef.once("value");
+      totalPremiumDownloads = premiumSnapshot.val() || 0;
     }
 
     // Check if URL is already a direct video URL
@@ -83,6 +91,12 @@ export async function POST(request: NextRequest) {
       // Increment usage only on success
       if (usageRef) {
         await usageRef.set(currentUsage + 1);
+      }
+      // Increment premium downloads counter
+      if (premiumDownloadsRef) {
+        await premiumDownloadsRef.set(totalPremiumDownloads + 1);
+        // Also track by date for analytics
+        await userRef.child(`premiumDownloadsByDate/${today}`).transaction((current) => (current || 0) + 1);
       }
       return NextResponse.json({ videoUrl: url });
     }
@@ -139,6 +153,13 @@ export async function POST(request: NextRequest) {
     // Increment usage only on success
     if (usageRef) {
       await usageRef.set(currentUsage + 1);
+    }
+    
+    // Increment premium downloads counter
+    if (premiumDownloadsRef) {
+      await premiumDownloadsRef.set(totalPremiumDownloads + 1);
+      // Also track by date for analytics
+      await userRef.child(`premiumDownloadsByDate/${today}`).transaction((current) => (current || 0) + 1);
     }
 
     return NextResponse.json({ videoUrl: cleanUrl });
