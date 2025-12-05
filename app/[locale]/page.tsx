@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -19,6 +19,7 @@ import { UserMenu } from "@/components/user-menu";
 import { useAuth } from "@/components/auth-provider";
 import { AuthModal } from "@/components/auth-modal";
 import { UpgradeModal } from "@/components/upgrade-modal";
+import { useSearchParams } from "next/navigation";
 
 export default function Home() {
   const t = useTranslations("home");
@@ -38,6 +39,38 @@ export default function Home() {
   const [loginOpen, setLoginOpen] = useState(false);
   const [upgradeOpen, setUpgradeOpen] = useState(false);
   const { user } = useAuth();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const verifyPayment = async () => {
+      const success = searchParams.get("success");
+      const sessionId = searchParams.get("session_id");
+
+      if (success === "true" && sessionId && user) {
+        try {
+          const token = await user.getIdToken();
+          const response = await fetch("/api/stripe/verify-payment", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ sessionId }),
+          });
+
+          const data = await response.json();
+          console.log("Payment verification:", data);
+
+          // Remove query params from URL
+          window.history.replaceState({}, "", window.location.pathname);
+        } catch (error) {
+          console.error("Error verifying payment:", error);
+        }
+      }
+    };
+
+    verifyPayment();
+  }, [searchParams, user]);
 
   const handleDownload = async (e: React.FormEvent) => {
     e.preventDefault();

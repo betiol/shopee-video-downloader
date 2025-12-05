@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
                 },
             ],
             mode: "payment",
-            success_url: `${request.nextUrl.origin}/?success=true`,
+            success_url: `${request.nextUrl.origin}/?success=true&session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${request.nextUrl.origin}/?canceled=true`,
             customer_email: userEmail,
             metadata: {

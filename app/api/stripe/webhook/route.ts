@@ -32,13 +32,15 @@ export async function POST(request: NextRequest) {
         const session = event.data.object as Stripe.Checkout.Session;
         const userId = session.metadata?.userId;
         const paymentIntentId = session.payment_intent;
+        const paymentStatus = session.payment_status;
 
         console.log(`📦 Checkout session completed:`, {
             sessionId: session.id,
             userId,
             paymentIntentId,
             customerEmail: session.customer_email,
-            paymentStatus: session.payment_status,
+            paymentStatus,
+            mode: session.mode,
         });
 
         if (!userId) {
@@ -46,20 +48,33 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ received: true, error: "No userId" });
         }
 
-        if (!paymentIntentId) {
-            console.error("❌ No payment_intent in session!");
-            return NextResponse.json({ received: true, error: "No payment_intent" });
+        // For one-time payments, check if payment was successful
+        // Payment can be 'paid', 'unpaid', or 'no_payment_required'
+        if (paymentStatus !== "paid") {
+            console.warn(`⚠️ Payment not completed yet. Status: ${paymentStatus}`);
+            return NextResponse.json({ received: true, warning: "Payment not completed" });
         }
 
         try {
-            // Update user to premium and store payment intent ID
-            await adminDb.ref(`users/${userId}`).update({
+            // Update user to premium
+            const updateData: any = {
                 isPremium: true,
-                paymentIntentId: paymentIntentId,
                 customerEmail: session.customer_email,
                 purchasedAt: new Date().toISOString(),
+                sessionId: session.id,
+            };
+
+            // Add payment intent ID if available
+            if (paymentIntentId) {
+                updateData.paymentIntentId = paymentIntentId;
+            }
+
+            await adminDb.ref(`users/${userId}`).update(updateData);
+            
+            console.log(`✅ User ${userId} upgraded to premium`, {
+                paymentIntentId: paymentIntentId || 'N/A',
+                sessionId: session.id,
             });
-            console.log(`✅ User ${userId} upgraded to premium with payment intent ${paymentIntentId}`);
         } catch (error: any) {
             console.error(`❌ Error updating user ${userId}:`, error.message);
             return NextResponse.json({ received: true, error: error.message });
