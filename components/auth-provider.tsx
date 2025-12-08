@@ -61,10 +61,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                     setIsPremium(!!snapshot.val());
                 });
 
-                // Listen to daily usage
-                const today = new Date().toISOString().split("T")[0];
-                const usageRef = ref(db, `users/${user.uid}/usage/${today}`);
-                onValue(usageRef, (snapshot) => {
+                // Listen to total usage (lifetime downloads for free users)
+                const totalUsageRef = ref(db, `users/${user.uid}/totalUsage`);
+                onValue(totalUsageRef, (snapshot) => {
                     setUsage(snapshot.val() || 0);
                 });
             } else {

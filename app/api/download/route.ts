@@ -59,21 +59,21 @@ export async function POST(request: NextRequest) {
 
     // Store usage info for later increment (only after success)
     const today = new Date().toISOString().split("T")[0];
-    let usageRef = null;
-    let currentUsage = 0;
+    let totalUsageRef = null;
+    let currentTotalUsage = 0;
     let premiumDownloadsRef = null;
     let totalPremiumDownloads = 0;
 
     if (!isPremium) {
-      // Free users: daily limit
-      usageRef = userRef.child(`usage/${today}`);
-      const usageSnapshot = await usageRef.once("value");
-      currentUsage = usageSnapshot.val() || 0;
+      // Free users: total lifetime limit of 5 downloads
+      totalUsageRef = userRef.child('totalUsage');
+      const totalUsageSnapshot = await totalUsageRef.once("value");
+      currentTotalUsage = totalUsageSnapshot.val() || 0;
 
-      if (currentUsage >= 5) {
+      if (currentTotalUsage >= 5) {
         return NextResponse.json(
           {
-            error: "Limite diário de 5 vídeos atingido. Faça upgrade para ilimitado!",
+            error: "Limite de 5 downloads grátis atingido. Faça upgrade para ilimitado!",
             code: "LIMIT_REACHED"
           },
           { status: 403 }
@@ -89,8 +89,8 @@ export async function POST(request: NextRequest) {
     // Check if URL is already a direct video URL
     if (url.includes('susercontent.com') && url.includes('.mp4')) {
       // Increment usage only on success
-      if (usageRef) {
-        await usageRef.set(currentUsage + 1);
+      if (totalUsageRef) {
+        await totalUsageRef.set(currentTotalUsage + 1);
       }
       // Increment premium downloads counter
       if (premiumDownloadsRef) {
@@ -151,8 +151,8 @@ export async function POST(request: NextRequest) {
     const cleanUrl = rawUrl.replace(/\.\d+\.\d+(?=\.mp4)/, "");
 
     // Increment usage only on success
-    if (usageRef) {
-      await usageRef.set(currentUsage + 1);
+    if (totalUsageRef) {
+      await totalUsageRef.set(currentTotalUsage + 1);
     }
     
     // Increment premium downloads counter
