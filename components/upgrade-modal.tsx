@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import {
     Dialog,
@@ -18,9 +18,45 @@ interface UpgradeModalProps {
     onUpgrade: () => Promise<void>;
 }
 
+interface PricingData {
+    amount: number;
+    currency: string;
+    display: string;
+    country: string;
+}
+
 export function UpgradeModal({ open, onOpenChange, onUpgrade }: UpgradeModalProps) {
     const t = useTranslations("upgradeModal");
     const [loading, setLoading] = useState(false);
+    const [pricing, setPricing] = useState<PricingData>({
+        amount: 30,
+        currency: 'BRL',
+        display: 'R$ 30',
+        country: 'BR'
+    });
+    const [loadingPrice, setLoadingPrice] = useState(true);
+
+    useEffect(() => {
+        if (open) {
+            fetchPricing();
+        }
+    }, [open]);
+
+    const fetchPricing = async () => {
+        try {
+            setLoadingPrice(true);
+            const response = await fetch('/api/pricing');
+            if (response.ok) {
+                const data = await response.json();
+                setPricing(data);
+            }
+        } catch (error) {
+            console.error('Error fetching pricing:', error);
+            // Keep default pricing on error
+        } finally {
+            setLoadingPrice(false);
+        }
+    };
 
     const handleUpgrade = async () => {
         setLoading(true);
@@ -52,13 +88,22 @@ export function UpgradeModal({ open, onOpenChange, onUpgrade }: UpgradeModalProp
                     {/* Price */}
                     <div className="text-center">
                         <div className="flex items-center justify-center gap-2">
-                            <span className="text-5xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
-                                {t("price")}
-                            </span>
+                            {loadingPrice ? (
+                                <Loader2 className="h-8 w-8 animate-spin text-amber-600" />
+                            ) : (
+                                <span className="text-5xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
+                                    {pricing.display}
+                                </span>
+                            )}
                         </div>
                         <p className="text-sm text-muted-foreground mt-2">
                             {t("oneTime")}
                         </p>
+                        {!loadingPrice && pricing.country !== 'BR' && (
+                            <p className="text-xs text-amber-600 mt-1 font-medium">
+                                🌍 International pricing
+                            </p>
+                        )}
                     </div>
 
                     {/* Features */}

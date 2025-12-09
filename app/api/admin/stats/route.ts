@@ -57,12 +57,16 @@ export async function GET(request: NextRequest) {
                         email: userData.customerEmail || "N/A",
                         purchasedAt: userData.purchasedAt,
                         refundRequested: userData.refundRequested || false,
+                        pricePaid: userData.pricePaid || 30,
+                        country: userData.country || 'BR',
                     });
                 }
 
-                // Calculate revenue (R$50 per premium user minus refunds)
+                // Calculate revenue (actual price paid, defaults to R$30 for old purchases)
                 if (!userData.refundCompleted) {
-                    totalRevenue += 50;
+                    // Try to get actual price from purchase metadata, fallback to R$30
+                    const pricePaid = userData.pricePaid || 30;
+                    totalRevenue += pricePaid;
                 }
 
                 // Aggregate downloads by date

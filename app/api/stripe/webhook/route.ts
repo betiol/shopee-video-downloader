@@ -57,12 +57,17 @@ export async function POST(request: NextRequest) {
         }
 
         try {
+            // Calculate price paid in BRL (amount_total is in cents)
+            const pricePaid = session.amount_total ? session.amount_total / 100 : 30;
+            
             // Update user to premium
             const updateData: any = {
                 isPremium: true,
                 customerEmail: session.customer_email,
                 purchasedAt: new Date().toISOString(),
                 sessionId: session.id,
+                pricePaid: pricePaid, // Store actual price paid
+                country: session.metadata?.country || 'BR', // Store country
             };
 
             // Add payment intent ID if available
