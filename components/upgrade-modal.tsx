@@ -99,11 +99,6 @@ export function UpgradeModal({ open, onOpenChange, onUpgrade }: UpgradeModalProp
                         <p className="text-sm text-muted-foreground mt-2">
                             {t("oneTime")}
                         </p>
-                        {!loadingPrice && pricing.country !== 'BR' && (
-                            <p className="text-xs text-amber-600 mt-1 font-medium">
-                                🌍 International pricing
-                            </p>
-                        )}
                     </div>
 
                     {/* Features */}
