@@ -92,11 +92,20 @@ export async function POST(request: NextRequest) {
       if (totalUsageRef) {
         await totalUsageRef.set(currentTotalUsage + 1);
       }
-      // Increment premium downloads counter
+      // Increment premium downloads counter and save URL
       if (premiumDownloadsRef) {
         await premiumDownloadsRef.set(totalPremiumDownloads + 1);
         // Also track by date for analytics
         await userRef.child(`premiumDownloadsByDate/${today}`).transaction((current) => (current || 0) + 1);
+        
+        // Save downloaded URL for premium users
+        const downloadRef = userRef.child('downloadedUrls').push();
+        await downloadRef.set({
+          originalUrl: url,
+          videoUrl: url,
+          timestamp: new Date().toISOString(),
+          date: today,
+        });
       }
       return NextResponse.json({ videoUrl: url });
     }
@@ -160,6 +169,15 @@ export async function POST(request: NextRequest) {
       await premiumDownloadsRef.set(totalPremiumDownloads + 1);
       // Also track by date for analytics
       await userRef.child(`premiumDownloadsByDate/${today}`).transaction((current) => (current || 0) + 1);
+      
+      // Save downloaded URL for premium users
+      const downloadRef = userRef.child('downloadedUrls').push();
+      await downloadRef.set({
+        originalUrl: url,
+        videoUrl: cleanUrl,
+        timestamp: new Date().toISOString(),
+        date: today,
+      });
     }
 
     return NextResponse.json({ videoUrl: cleanUrl });

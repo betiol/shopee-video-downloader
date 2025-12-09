@@ -4,7 +4,13 @@ import { useEffect, useState } from "react";
 import { useAuth } from "@/components/auth-provider";
 import { useRouter } from "next/navigation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Loader2, Users, Crown, DollarSign, Download, TrendingUp, AlertCircle } from "lucide-react";
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Loader2, Users, Crown, DollarSign, Download, TrendingUp, AlertCircle, Link2, ExternalLink } from "lucide-react";
 
 const ADMIN_EMAIL = "nikollasdev@gmail.com";
 
@@ -37,10 +43,28 @@ interface Stats {
     }>;
 }
 
+interface PremiumUrlsData {
+    totalPremiumUsers: number;
+    users: Array<{
+        userId: string;
+        email: string;
+        totalDownloads: number;
+        urlCount: number;
+        recentUrls: Array<{
+            id: string;
+            originalUrl: string;
+            videoUrl: string;
+            timestamp: string;
+            date: string;
+        }>;
+    }>;
+}
+
 export default function AdminDashboard() {
     const { user, loading: authLoading } = useAuth();
     const router = useRouter();
     const [stats, setStats] = useState<Stats | null>(null);
+    const [premiumUrls, setPremiumUrls] = useState<PremiumUrlsData | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
 
@@ -57,6 +81,7 @@ export default function AdminDashboard() {
             }
 
             fetchStats();
+            fetchPremiumUrls();
         }
     }, [user, authLoading, router]);
 
@@ -79,6 +104,26 @@ export default function AdminDashboard() {
             setError(err.message);
         } finally {
             setLoading(false);
+        }
+    };
+
+    const fetchPremiumUrls = async () => {
+        try {
+            const token = await user?.getIdToken();
+            const response = await fetch("/api/admin/premium-urls", {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to fetch premium URLs");
+            }
+
+            const data = await response.json();
+            setPremiumUrls(data);
+        } catch (err: any) {
+            console.error("Error fetching premium URLs:", err);
         }
     };
 
@@ -281,6 +326,82 @@ export default function AdminDashboard() {
                         </div>
                     </CardContent>
                 </Card>
+
+                {/* Premium User Downloads */}
+                {premiumUrls && premiumUrls.users.length > 0 && (
+                    <Card>
+                        <CardHeader>
+                            <CardTitle className="flex items-center gap-2">
+                                <Link2 className="h-5 w-5 text-purple-600" />
+                                URLs Baixadas por Usuários Premium
+                            </CardTitle>
+                            <CardDescription>
+                                Últimas 5 URLs baixadas por cada usuário premium ({premiumUrls.totalPremiumUsers} usuários)
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <Accordion type="single" collapsible className="w-full">
+                                {premiumUrls.users.slice(0, 20).map((user, index) => (
+                                    <AccordionItem key={user.userId} value={`user-${index}`}>
+                                        <AccordionTrigger className="hover:no-underline">
+                                            <div className="flex items-center justify-between w-full pr-4">
+                                                <div className="flex items-center gap-3">
+                                                    <Crown className="h-4 w-4 text-amber-500 flex-shrink-0" />
+                                                    <div className="text-left">
+                                                        <p className="font-semibold text-sm">{user.email}</p>
+                                                        <p className="text-xs text-muted-foreground font-normal">
+                                                            {user.totalDownloads} downloads · {user.urlCount} URLs rastreadas
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </AccordionTrigger>
+                                        <AccordionContent>
+                                            {user.recentUrls.length > 0 ? (
+                                                <div className="space-y-2 pt-2">
+                                                    {user.recentUrls.map((urlData) => (
+                                                        <div key={urlData.id} className="bg-slate-50 rounded-lg p-3 space-y-2 border border-slate-200">
+                                                            <div className="space-y-1">
+                                                                <p className="text-xs font-medium text-slate-600">URL Original:</p>
+                                                                <a
+                                                                    href={urlData.originalUrl}
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    className="text-xs text-blue-600 hover:text-blue-800 hover:underline break-all flex items-start gap-1 group"
+                                                                >
+                                                                    <span className="flex-1">{urlData.originalUrl}</span>
+                                                                    <ExternalLink className="h-3 w-3 flex-shrink-0 mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                                                </a>
+                                                            </div>
+                                                            <div className="flex items-center justify-between text-xs text-muted-foreground pt-1 border-t border-slate-200">
+                                                                <span className="flex items-center gap-1">
+                                                                    📅 {new Date(urlData.timestamp).toLocaleString('pt-BR', {
+                                                                        day: '2-digit',
+                                                                        month: '2-digit',
+                                                                        year: 'numeric',
+                                                                        hour: '2-digit',
+                                                                        minute: '2-digit'
+                                                                    })}
+                                                                </span>
+                                                                <span className="px-2 py-0.5 bg-slate-200 rounded text-xs font-medium">
+                                                                    {urlData.date}
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            ) : (
+                                                <p className="text-sm text-muted-foreground italic py-4">
+                                                    Nenhuma URL rastreada ainda
+                                                </p>
+                                            )}
+                                        </AccordionContent>
+                                    </AccordionItem>
+                                ))}
+                            </Accordion>
+                        </CardContent>
+                    </Card>
+                )}
             </div>
         </div>
     );
