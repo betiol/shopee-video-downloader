@@ -1,7 +1,7 @@
 {
   "home": {
     "title": "Shopee Video Downloader",
-    "description": "Download Shopee videos without watermark quickly and easily. Free plan with 5 total downloads or unlimited premium.",
+    "description": "Download Shopee videos without watermark quickly and easily. Limited free plan or unlimited premium.",
     "inputPlaceholder": "Paste the Shopee video URL here...",
     "downloadButton": "Download",
     "processing": "Processing...",
@@ -84,7 +84,7 @@
   },
   "about": {
     "title": "Download Shopee video with Shopee Downloader",
-    "p1": "Shopee Downloader is an online tool to download Shopee videos by link. Our tool can help you save Shopee videos in MP4 with HD resolution. We offer a free plan with 5 total downloads and a premium plan with unlimited downloads for a one-time payment.",
+    "p1": "Shopee Downloader is an online tool to download Shopee videos by link. Our tool can help you save Shopee videos in MP4 with HD resolution. We offer a limited free plan and a premium plan with unlimited downloads for a one-time payment.",
     "p2": "With our Shopee Downloader, you can easily save any video without Shopee watermark in MP4 format with the best available quality.",
     "p3": "You don't need to install any software on your phone or PC. All you need is a link to the page containing the Shopee video and all processing is done on our side."
   },
@@ -94,7 +94,7 @@
   },
   "desktop": {
     "title": "Download Shopee video on PC",
-    "description": "This method is universal and convenient because the video will be downloaded without watermark online by link in original quality. PC users don't need to install additional software, which is a particular advantage of this method. To use Shopee downloader, you need to copy the video link. Then access our site and enter the link in the field. Free plan allows 5 total downloads, or upgrade to premium for unlimited downloads."
+    "description": "This method is universal and convenient because the video will be downloaded without watermark online by link in original quality. PC users don't need to install additional software, which is a particular advantage of this method. To use Shopee downloader, you need to copy the video link. Then access our site and enter the link in the field. Upgrade to premium for unlimited downloads."
   },
   "nav": {
     "home": "Home",
@@ -142,7 +142,7 @@
     },
     "payment": {
       "title": "Premium Access",
-      "description": "We offer a Premium plan with unlimited downloads for a one-time payment. No monthly subscriptions."
+      "description": "We offer a Premium plan with unlimited downloads for a one-time payment. Special pricing for Brazilians. No monthly subscriptions."
     },
     "serviceDisclaimer": {
       "title": "Service Availability",
@@ -249,7 +249,7 @@
   "upgradeModal": {
     "title": "Upgrade to Premium",
     "description": "Unlock unlimited downloads for only",
-    "price": "R$30",
+
     "oneTime": "One-time payment • Lifetime access",
     "features": {
       "unlimited": {

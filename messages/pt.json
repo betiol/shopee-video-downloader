@@ -1,7 +1,7 @@
 {
   "home": {
     "title": "Shopee Video Downloader",
-    "description": "Baixe vídeos da Shopee sem marca d'água de forma rápida e fácil. Plano gratuito com 5 downloads totais ou premium ilimitado.",
+    "description": "Baixe vídeos da Shopee sem marca d'água de forma rápida e fácil. Plano gratuito limitado ou premium ilimitado.",
     "inputPlaceholder": "Cole a URL do vídeo da Shopee aqui...",
     "downloadButton": "Baixar",
     "processing": "Processando...",
@@ -84,7 +84,7 @@
   },
   "about": {
     "title": "Baixar vídeo da Shopee com o Shopee Downloader",
-    "p1": "Shopee Downloader é uma ferramenta online para baixar vídeos da Shopee pelo link. Nossa ferramenta pode ajudá-lo a salvar vídeos da Shopee em MP4 com resolução HD. Oferecemos um plano gratuito com 5 downloads totais e um plano premium com downloads ilimitados por pagamento único.",
+    "p1": "Shopee Downloader é uma ferramenta online para baixar vídeos da Shopee pelo link. Nossa ferramenta pode ajudá-lo a salvar vídeos da Shopee em MP4 com resolução HD. Oferecemos um plano gratuito limitado e um plano premium com downloads ilimitados por pagamento único.",
     "p2": "Com nosso Shopee Downloader, você pode salvar facilmente qualquer vídeo sem marca d'água da Shopee no formato MP4 com a melhor qualidade disponível.",
     "p3": "Você não precisa instalar nenhum software no seu celular ou PC. Tudo que você precisa é um link para a página que contém o vídeo da Shopee e todo o processamento é feito do nosso lado."
   },
@@ -94,7 +94,7 @@
   },
   "desktop": {
     "title": "Baixar vídeo Shopee no PC",
-    "description": "Este método é universal e conveniente porque o vídeo será baixado sem marca d'água online por link na qualidade original. Não é necessário que os usuários de PC instalem software adicional, o que é uma vantagem particular deste método. Para usar o Shopee downloader, você precisa copiar o link do vídeo. Em seguida, acesse nosso site e insira o link no campo. Plano gratuito permite 5 downloads totais, ou faça upgrade para premium e tenha downloads ilimitados."
+    "description": "Este método é universal e conveniente porque o vídeo será baixado sem marca d'água online por link na qualidade original. Não é necessário que os usuários de PC instalem software adicional, o que é uma vantagem particular deste método. Para usar o Shopee downloader, você precisa copiar o link do vídeo. Em seguida, acesse nosso site e insira o link no campo. Faça upgrade para premium e tenha downloads ilimitados."
   },
   "nav": {
     "home": "Início",
@@ -142,7 +142,7 @@
     },
     "payment": {
       "title": "Acesso Premium",
-      "description": "Oferecemos um plano Premium com downloads ilimitados por um pagamento único. Sem assinaturas mensais."
+      "description": "Oferecemos um plano Premium com downloads ilimitados por um pagamento único. Preço especial para brasileiros. Sem assinaturas mensais."
     },
     "serviceDisclaimer": {
       "title": "Disponibilidade do Serviço",
@@ -249,7 +249,7 @@
   "upgradeModal": {
     "title": "Upgrade para Premium",
     "description": "Desbloqueie downloads ilimitados por apenas",
-    "price": "R$30",
+
     "oneTime": "Pagamento único • Acesso vitalício",
     "features": {
       "unlimited": {
