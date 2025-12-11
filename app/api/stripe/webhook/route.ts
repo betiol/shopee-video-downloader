@@ -10,18 +10,30 @@ export async function POST(request: NextRequest) {
 
     let event: Stripe.Event;
 
+    // Check if we're in development mode for testing
+    const isDevelopment = process.env.NODE_ENV === 'development';
+    const isTestSignature = signature === 'test_signature';
+
     try {
         if (!process.env.STRIPE_WEBHOOK_SECRET) {
             console.error("❌ STRIPE_WEBHOOK_SECRET is missing in environment variables");
             throw new Error("Server configuration error: Missing Webhook Secret");
         }
 
-        event = stripe.webhooks.constructEvent(
-            body,
-            signature,
-            process.env.STRIPE_WEBHOOK_SECRET
-        );
-        console.log("✅ Webhook verified successfully:", event.type);
+        // Skip signature validation in development with test signature
+        if (isDevelopment && isTestSignature) {
+            console.log("🧪 [DEV MODE] Skipping Stripe signature validation for testing");
+            event = JSON.parse(body);
+            console.log("✅ Webhook event parsed (test mode):", event.type);
+        } else {
+            // Production: validate signature
+            event = stripe.webhooks.constructEvent(
+                body,
+                signature,
+                process.env.STRIPE_WEBHOOK_SECRET
+            );
+            console.log("✅ Webhook verified successfully:", event.type);
+        }
     } catch (err: any) {
         console.error(`❌ Webhook Error: ${err.message}`);
         console.error(`Signature: ${signature?.substring(0, 10)}...`);
