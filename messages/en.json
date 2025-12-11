@@ -249,8 +249,10 @@
   "upgradeModal": {
     "title": "Upgrade to Premium",
     "description": "Unlock unlimited downloads for only",
-
     "oneTime": "One-time payment • Lifetime access",
+    "paymentMethod": "Choose payment method",
+    "card": "Card",
+    "pix": "PIX",
     "features": {
       "unlimited": {
         "title": "Unlimited Downloads",
@@ -271,7 +273,24 @@
     },
     "button": "Upgrade Now",
     "processing": "Processing...",
-    "securePayment": "Secure payment processed by Stripe"
+    "securePayment": "Secure payment"
+  },
+  "pixPayment": {
+    "loading": "Generating PIX code...",
+    "scanQrCode": "Scan the QR Code with your bank app",
+    "pixCode": "Or copy the PIX code",
+    "copied": "Code copied!",
+    "instructions": {
+      "title": "How to pay with PIX",
+      "step1": "Open your bank app",
+      "step2": "Scan the QR Code or paste the PIX code",
+      "step3": "Confirm the payment of R$ 30.00"
+    },
+    "timeRemaining": "Time remaining",
+    "waitingPayment": "Waiting for payment...",
+    "success": "Payment confirmed! Redirecting...",
+    "failed": "Payment failed. Please try again.",
+    "cancel": "Cancel"
   },
   "refund": {
     "button": "Request Refund",

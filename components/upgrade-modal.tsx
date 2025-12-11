@@ -10,7 +10,9 @@ import {
     DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Crown, Check, Loader2, Zap } from "lucide-react";
+import { Crown, Check, Loader2, Zap, CreditCard, QrCode } from "lucide-react";
+import { PixPayment } from "@/components/pix-payment";
+import { getAuth } from "firebase/auth";
 
 interface UpgradeModalProps {
     open: boolean;
@@ -25,6 +27,8 @@ interface PricingData {
     country: string;
 }
 
+type PaymentMethod = "card" | "pix";
+
 export function UpgradeModal({ open, onOpenChange, onUpgrade }: UpgradeModalProps) {
     const t = useTranslations("upgradeModal");
     const [loading, setLoading] = useState(false);
@@ -35,10 +39,17 @@ export function UpgradeModal({ open, onOpenChange, onUpgrade }: UpgradeModalProp
         country: 'BR'
     });
     const [loadingPrice, setLoadingPrice] = useState(true);
+    const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("card");
+    const [pixPreferenceId, setPixPreferenceId] = useState<string | null>(null);
+    const [pixInitPoint, setPixInitPoint] = useState<string | null>(null);
+    const [showPixPayment, setShowPixPayment] = useState(false);
 
     useEffect(() => {
         if (open) {
             fetchPricing();
+            setShowPixPayment(false);
+            setPixPreferenceId(null);
+            setPixInitPoint(null);
         }
     }, [open]);
 
@@ -61,11 +72,78 @@ export function UpgradeModal({ open, onOpenChange, onUpgrade }: UpgradeModalProp
     const handleUpgrade = async () => {
         setLoading(true);
         try {
-            await onUpgrade();
+            if (paymentMethod === "card") {
+                // Use Stripe (existing flow)
+                await onUpgrade();
+            } else {
+                // Use Mercado Pago PIX
+                await handlePixPayment();
+            }
         } finally {
             setLoading(false);
         }
     };
+
+    const handlePixPayment = async () => {
+        try {
+            const auth = getAuth();
+            const user = auth.currentUser;
+            if (!user) {
+                throw new Error("User not authenticated");
+            }
+
+            const token = await user.getIdToken();
+            const response = await fetch("/api/mercadopago/checkout", {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to create PIX payment");
+            }
+
+            const data = await response.json();
+            setPixPreferenceId(data.preferenceId);
+            setPixInitPoint(data.initPoint);
+            setShowPixPayment(true);
+        } catch (error) {
+            console.error("Error creating PIX payment:", error);
+        }
+    };
+
+    const handlePixSuccess = () => {
+        setShowPixPayment(false);
+        onOpenChange(false);
+        window.location.reload(); // Reload to update premium status
+    };
+
+    const handlePixCancel = () => {
+        setShowPixPayment(false);
+        setPixPreferenceId(null);
+        setPixInitPoint(null);
+    };
+
+    if (showPixPayment && pixPreferenceId && pixInitPoint) {
+        return (
+            <Dialog open={open} onOpenChange={onOpenChange}>
+                <DialogContent className="sm:max-w-md">
+                    <DialogHeader>
+                        <DialogTitle className="text-center text-2xl font-bold">
+                            Pagamento PIX
+                        </DialogTitle>
+                    </DialogHeader>
+                    <PixPayment
+                        preferenceId={pixPreferenceId}
+                        initPoint={pixInitPoint}
+                        onSuccess={handlePixSuccess}
+                        onCancel={handlePixCancel}
+                    />
+                </DialogContent>
+            </Dialog>
+        );
+    }
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
@@ -138,7 +216,29 @@ export function UpgradeModal({ open, onOpenChange, onUpgrade }: UpgradeModalProp
                                 </p>
                             </div>
                         </div>
+                    </div>
 
+                    {/* Payment Method Selection */}
+                    <div className="space-y-3">
+                        <label className="text-sm font-medium">{t("paymentMethod")}</label>
+                        <div className="grid grid-cols-2 gap-3">
+                            <Button
+                                variant={paymentMethod === "card" ? "default" : "outline"}
+                                className={paymentMethod === "card" ? "bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white border-0" : ""}
+                                onClick={() => setPaymentMethod("card")}
+                            >
+                                <CreditCard className="mr-2 h-4 w-4" />
+                                {t("card")}
+                            </Button>
+                            <Button
+                                variant={paymentMethod === "pix" ? "default" : "outline"}
+                                className={paymentMethod === "pix" ? "bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white border-0" : ""}
+                                onClick={() => setPaymentMethod("pix")}
+                            >
+                                <QrCode className="mr-2 h-4 w-4" />
+                                {t("pix")}
+                            </Button>
+                        </div>
                     </div>
 
                     {/* CTA Button */}

@@ -249,8 +249,10 @@
   "upgradeModal": {
     "title": "Upgrade para Premium",
     "description": "Desbloqueie downloads ilimitados por apenas",
-
     "oneTime": "Pagamento único • Acesso vitalício",
+    "paymentMethod": "Escolha a forma de pagamento",
+    "card": "Cartão",
+    "pix": "PIX",
     "features": {
       "unlimited": {
         "title": "Downloads Ilimitados",
@@ -271,7 +273,24 @@
     },
     "button": "Fazer Upgrade Agora",
     "processing": "Processando...",
-    "securePayment": "Pagamento seguro processado pelo Stripe"
+    "securePayment": "Pagamento seguro"
+  },
+  "pixPayment": {
+    "loading": "Gerando código PIX...",
+    "scanQrCode": "Escaneie o QR Code com o app do seu banco",
+    "pixCode": "Ou copie o código PIX",
+    "copied": "Código copiado!",
+    "instructions": {
+      "title": "Como pagar com PIX",
+      "step1": "Abra o app do seu banco",
+      "step2": "Escaneie o QR Code ou cole o código PIX",
+      "step3": "Confirme o pagamento de R$ 30,00"
+    },
+    "timeRemaining": "Tempo restante",
+    "waitingPayment": "Aguardando pagamento...",
+    "success": "Pagamento confirmado! Redirecionando...",
+    "failed": "Pagamento falhou. Tente novamente.",
+    "cancel": "Cancelar"
   },
   "refund": {
     "button": "Solicitar Reembolso",

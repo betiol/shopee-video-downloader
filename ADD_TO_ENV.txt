@@ -1,0 +1,5 @@
+# Adicione estas linhas ao seu arquivo .env.local
+
+# Mercado Pago Configuration (for PIX payments)
+MERCADOPAGO_ACCESS_TOKEN=APP_USR-7672912659285625-121021-d96d495ccdfac8e125280fa51c56b482-224369150
+NEXT_PUBLIC_MERCADOPAGO_PUBLIC_KEY=APP_USR-ef4506bb-acc1-44d6-8582-968ec5ee92c1
