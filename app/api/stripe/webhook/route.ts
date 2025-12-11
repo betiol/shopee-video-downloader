@@ -99,6 +99,96 @@ export async function POST(request: NextRequest) {
         }
     }
 
+    // Handle checkout.session.async_payment_succeeded (BOLETO PAID)
+    if (event.type === "checkout.session.async_payment_succeeded") {
+        const session = event.data.object as Stripe.Checkout.Session;
+        const userId = session.metadata?.userId;
+        const paymentIntentId = session.payment_intent;
+
+        console.log(`💰 Async payment succeeded (BOLETO PAID):`, {
+            sessionId: session.id,
+            userId,
+            paymentIntentId,
+            customerEmail: session.customer_email,
+        });
+
+        if (!userId) {
+            console.error("❌ No userId in session metadata!");
+            return NextResponse.json({ received: true, error: "No userId" });
+        }
+
+        try {
+            // Check if user is already premium (manual activation)
+            const userRef = adminDb.ref(`users/${userId}`);
+            const userSnapshot = await userRef.once('value');
+            const userData = userSnapshot.val();
+
+            if (userData?.isPremium) {
+                console.log(`ℹ️ User ${userId} is already premium (manual activation). Skipping update.`, {
+                    existingPurchaseDate: userData.purchasedAt,
+                    existingPricePaid: userData.pricePaid,
+                });
+                
+                // Still send thank you email if not sent
+                if (session.customer_email && !userData.thankYouEmailSent) {
+                    sendThankYouEmail({
+                        to: session.customer_email,
+                        userName: session.customer_details?.name || undefined,
+                    }).catch((error) => {
+                        console.error("❌ Failed to send thank you email:", error);
+                    });
+                    await userRef.update({ thankYouEmailSent: true });
+                    console.log(`📧 Thank you email sent for ${session.customer_email}`);
+                }
+                
+                return NextResponse.json({ received: true, note: "User already premium" });
+            }
+
+            // Calculate price paid in BRL (amount_total is in cents)
+            const pricePaid = session.amount_total ? session.amount_total / 100 : 30;
+            
+            // Update user to premium
+            const updateData: any = {
+                isPremium: true,
+                customerEmail: session.customer_email,
+                purchasedAt: new Date().toISOString(),
+                sessionId: session.id,
+                pricePaid: pricePaid,
+                country: session.metadata?.country || 'BR',
+                paymentMethod: 'boleto',
+                thankYouEmailSent: false,
+            };
+
+            // Add payment intent ID if available
+            if (paymentIntentId) {
+                updateData.paymentIntentId = paymentIntentId;
+            }
+
+            await adminDb.ref(`users/${userId}`).update(updateData);
+            
+            console.log(`✅ User ${userId} upgraded to premium via BOLETO`, {
+                paymentIntentId: paymentIntentId || 'N/A',
+                sessionId: session.id,
+                pricePaid,
+            });
+
+            // Send thank you email asynchronously
+            if (session.customer_email) {
+                sendThankYouEmail({
+                    to: session.customer_email,
+                    userName: session.customer_details?.name || undefined,
+                }).catch((error) => {
+                    console.error("❌ Failed to send thank you email:", error);
+                });
+                await userRef.update({ thankYouEmailSent: true });
+                console.log(`📧 Thank you email queued for ${session.customer_email}`);
+            }
+        } catch (error: any) {
+            console.error(`❌ Error updating user ${userId}:`, error.message);
+            return NextResponse.json({ received: true, error: error.message });
+        }
+    }
+
     if (event.type === "charge.refunded") {
         const charge = event.data.object as Stripe.Charge;
         const paymentIntentId = charge.payment_intent as string;
