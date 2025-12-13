@@ -249,8 +249,9 @@
   "upgradeModal": {
     "title": "Upgrade para Premium",
     "description": "Desbloqueie downloads ilimitados por apenas",
-
     "oneTime": "Pagamento único • Acesso vitalício",
+    "selectPaymentMethod": "Escolha a forma de pagamento",
+    "cardButton": "Cartão",
     "features": {
       "unlimited": {
         "title": "Downloads Ilimitados",
@@ -271,7 +272,8 @@
     },
     "button": "Fazer Upgrade Agora",
     "processing": "Processando...",
-    "securePayment": "Pagamento seguro processado pelo Stripe"
+    "error": "Erro ao processar pagamento. Tente novamente.",
+    "securePayment": "Pagamento 100% seguro"
   },
   "refund": {
     "button": "Solicitar Reembolso",

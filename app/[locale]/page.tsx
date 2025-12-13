@@ -129,24 +129,6 @@ export default function Home() {
     }
   };
 
-  const handleUpgrade = async () => {
-    try {
-      const token = await user?.getIdToken();
-      const response = await fetch("/api/stripe/checkout", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const data = await response.json();
-      if (data.url) {
-        window.location.href = data.url;
-      }
-    } catch (error) {
-      console.error("Upgrade failed:", error);
-    }
-  };
-
   return (
     <>
       <div className="fixed top-4 right-4 z-50 flex items-center gap-2">
@@ -154,7 +136,7 @@ export default function Home() {
         <UserMenu />
       </div>
       <AuthModal open={loginOpen} onOpenChange={setLoginOpen} />
-      <UpgradeModal open={upgradeOpen} onOpenChange={setUpgradeOpen} onUpgrade={handleUpgrade} />
+      <UpgradeModal open={upgradeOpen} onOpenChange={setUpgradeOpen} />
       <main className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-purple-50">
         {/* Hero Section */}
         <section className="flex items-center justify-center p-4 min-h-[60vh]">

@@ -249,8 +249,9 @@
   "upgradeModal": {
     "title": "Upgrade to Premium",
     "description": "Unlock unlimited downloads for only",
-
     "oneTime": "One-time payment • Lifetime access",
+    "selectPaymentMethod": "Choose payment method",
+    "cardButton": "Card",
     "features": {
       "unlimited": {
         "title": "Unlimited Downloads",
@@ -271,7 +272,8 @@
     },
     "button": "Upgrade Now",
     "processing": "Processing...",
-    "securePayment": "Secure payment processed by Stripe"
+    "error": "Error processing payment. Please try again.",
+    "securePayment": "100% secure payment"
   },
   "refund": {
     "button": "Request Refund",

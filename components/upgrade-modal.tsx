@@ -10,12 +10,13 @@ import {
     DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Crown, Check, Loader2, Zap } from "lucide-react";
+import { Crown, Check, Loader2, Zap, CreditCard } from "lucide-react";
+import { useAuth } from "@/components/auth-provider";
 
 interface UpgradeModalProps {
     open: boolean;
     onOpenChange: (open: boolean) => void;
-    onUpgrade: () => Promise<void>;
+    onUpgrade?: () => Promise<void>;
 }
 
 interface PricingData {
@@ -25,8 +26,11 @@ interface PricingData {
     country: string;
 }
 
+type PaymentGateway = 'stripe' | 'kiwify';
+
 export function UpgradeModal({ open, onOpenChange, onUpgrade }: UpgradeModalProps) {
     const t = useTranslations("upgradeModal");
+    const { user } = useAuth();
     const [loading, setLoading] = useState(false);
     const [pricing, setPricing] = useState<PricingData>({
         amount: 30,
@@ -35,6 +39,7 @@ export function UpgradeModal({ open, onOpenChange, onUpgrade }: UpgradeModalProp
         country: 'BR'
     });
     const [loadingPrice, setLoadingPrice] = useState(true);
+    const [selectedGateway, setSelectedGateway] = useState<PaymentGateway>('kiwify');
 
     useEffect(() => {
         if (open) {
@@ -61,7 +66,40 @@ export function UpgradeModal({ open, onOpenChange, onUpgrade }: UpgradeModalProp
     const handleUpgrade = async () => {
         setLoading(true);
         try {
-            await onUpgrade();
+            if (onUpgrade) {
+                await onUpgrade();
+                return;
+            }
+
+            // Get Firebase auth token
+            const token = await user?.getIdToken();
+            if (!token) {
+                throw new Error("Not authenticated");
+            }
+
+            // Call appropriate checkout endpoint
+            const endpoint = selectedGateway === 'kiwify' 
+                ? '/api/kiwify/checkout' 
+                : '/api/stripe/checkout';
+
+            const response = await fetch(endpoint, {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to create checkout session");
+            }
+
+            const { url } = await response.json();
+            
+            // Redirect to checkout
+            window.location.href = url;
+        } catch (error) {
+            console.error("Upgrade error:", error);
+            alert(t("error") || "Failed to start checkout. Please try again.");
         } finally {
             setLoading(false);
         }
@@ -99,6 +137,52 @@ export function UpgradeModal({ open, onOpenChange, onUpgrade }: UpgradeModalProp
                         <p className="text-sm text-muted-foreground mt-2">
                             {t("oneTime")}
                         </p>
+                    </div>
+
+                    {/* Payment Method Selection */}
+                    <div className="space-y-3">
+                        <p className="text-sm font-medium text-center">{t("selectPaymentMethod")}</p>
+                        <div className="grid grid-cols-2 gap-3">
+                            {/* PIX Button */}
+                            <Button
+                                type="button"
+                                onClick={() => setSelectedGateway('kiwify')}
+                                variant="outline"
+                                className={`h-auto py-4 px-4 flex flex-col items-center gap-2 transition-all ${
+                                    selectedGateway === 'kiwify'
+                                        ? 'border-2 border-amber-500 bg-amber-50 dark:bg-amber-950/20'
+                                        : 'border-2 hover:border-amber-300'
+                                }`}
+                            >
+                                <svg 
+                                    className={`h-8 w-8 ${selectedGateway === 'kiwify' ? 'text-amber-600' : 'text-gray-600'}`}
+                                    viewBox="0 0 24 24" 
+                                    fill="currentColor"
+                                >
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                                </svg>
+                                <span className={`font-semibold text-base ${selectedGateway === 'kiwify' ? 'text-amber-600' : ''}`}>
+                                    PIX
+                                </span>
+                            </Button>
+
+                            {/* Card Button */}
+                            <Button
+                                type="button"
+                                onClick={() => setSelectedGateway('stripe')}
+                                variant="outline"
+                                className={`h-auto py-4 px-4 flex flex-col items-center gap-2 transition-all ${
+                                    selectedGateway === 'stripe'
+                                        ? 'border-2 border-amber-500 bg-amber-50 dark:bg-amber-950/20'
+                                        : 'border-2 hover:border-amber-300'
+                                }`}
+                            >
+                                <CreditCard className={`h-8 w-8 ${selectedGateway === 'stripe' ? 'text-amber-600' : 'text-gray-600'}`} />
+                                <span className={`font-semibold text-base ${selectedGateway === 'stripe' ? 'text-amber-600' : ''}`}>
+                                    {t("cardButton")}
+                                </span>
+                            </Button>
+                        </div>
                     </div>
 
                     {/* Features */}

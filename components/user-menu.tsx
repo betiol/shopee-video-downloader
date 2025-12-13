@@ -28,35 +28,13 @@ export function UserMenu() {
     const { user, loading, usage, isPremium, logout } = useAuth();
     const [loginOpen, setLoginOpen] = useState(false);
     const [upgradeOpen, setUpgradeOpen] = useState(false);
-    const [checkoutLoading, setCheckoutLoading] = useState(false);
     const [refundDialogOpen, setRefundDialogOpen] = useState(false);
     const [refundLoading, setRefundLoading] = useState(false);
     const [refundMessage, setRefundMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
     const t = useTranslations("auth");
     const tRefund = useTranslations("refund");
 
-    const handleUpgrade = async () => {
-        setCheckoutLoading(true);
-        try {
-            const token = await user?.getIdToken();
-            const response = await fetch("/api/stripe/checkout", {
-                method: "POST",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-            const data = await response.json();
-            if (data.url) {
-                window.location.href = data.url;
-            } else {
-                console.error("No checkout URL returned");
-            }
-        } catch (error) {
-            console.error("Upgrade failed:", error);
-        } finally {
-            setCheckoutLoading(false);
-        }
-    };
+
 
     const handleRefundRequest = async () => {
         setRefundLoading(true);
@@ -174,7 +152,6 @@ export function UserMenu() {
             <UpgradeModal
                 open={upgradeOpen}
                 onOpenChange={setUpgradeOpen}
-                onUpgrade={handleUpgrade}
             />
 
             <Dialog open={refundDialogOpen} onOpenChange={setRefundDialogOpen}>
@@ -220,6 +197,17 @@ export function UserMenu() {
                     </DialogFooter>
                 </DialogContent>
             </Dialog>
+
+            {/* Floating Upgrade Button for Mobile (Non-Premium Users) */}
+            {!isPremium && (
+                <Button
+                    onClick={() => setUpgradeOpen(true)}
+                    size="lg"
+                    className="fixed bottom-6 right-6 z-50 md:hidden h-14 w-14 rounded-full shadow-2xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white border-0 animate-bounce-slow hover:animate-none"
+                >
+                    <Crown className="h-6 w-6" />
+                </Button>
+            )}
         </div>
     );
 }
