@@ -142,9 +142,9 @@ export function UpgradeModal({ open, onOpenChange, onUpgrade }: UpgradeModalProp
                     {/* Payment Method Selection */}
                     <div className="space-y-3">
                         <p className="text-sm font-medium text-center">{t("selectPaymentMethod")}</p>
-                        <div className="grid grid-cols-1 gap-3">
+                        <div className="grid grid-cols-2 gap-3">
                             {/* PIX Button */}
-                            {/* <Button
+                            <Button
                                 type="button"
                                 onClick={() => setSelectedGateway('kiwify')}
                                 variant="outline"
@@ -164,7 +164,7 @@ export function UpgradeModal({ open, onOpenChange, onUpgrade }: UpgradeModalProp
                                 <span className={`font-semibold text-base ${selectedGateway === 'kiwify' ? 'text-amber-600' : ''}`}>
                                     PIX
                                 </span>
-                            </Button> */}
+                            </Button>
 
                             {/* Card Button */}
                             <Button
