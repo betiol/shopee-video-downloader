@@ -10,7 +10,7 @@ import {
     DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Crown, Check, Loader2, Zap, CreditCard } from "lucide-react";
+import { CreditCard, Crown, Check, Loader2, Zap, Droplet } from "lucide-react";
 import { useAuth } from "@/components/auth-provider";
 
 interface UpgradeModalProps {
@@ -200,13 +200,11 @@ export function UpgradeModal({ open, onOpenChange, onUpgrade }: UpgradeModalProp
                         </div>
 
                         <div className="flex items-start gap-3">
-                            <div className="p-1 bg-green-100 rounded-full mt-0.5">
-                                <Check className="h-4 w-4 text-green-600" />
-                            </div>
+                            <Droplet className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
                             <div>
-                                <p className="font-semibold">{t("features.noWatermark.title")}</p>
+                                <p className="font-semibold">{t("features.highQuality.title")}</p>
                                 <p className="text-sm text-muted-foreground">
-                                    {t("features.noWatermark.description")}
+                                    {t("features.highQuality.description")}
                                 </p>
                             </div>
                         </div>

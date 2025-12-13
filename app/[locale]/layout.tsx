@@ -26,19 +26,19 @@ export async function generateMetadata({
 
   return {
     title: isPt
-      ? "Shopee Video Downloader - Baixe Vídeos da Shopee Sem Marca D'água"
-      : "Shopee Video Downloader - Download Shopee Videos Without Watermark",
+      ? "Shopee Video Downloader - Baixe Vídeos da Shopee em Qualidade Original"
+      : "Shopee Video Downloader - Download Shopee Videos in Original Quality",
     description: isPt
-      ? "Baixe vídeos da Shopee sem marca d'água de forma rápida e gratuita. Cole a URL do vídeo e faça o download instantaneamente."
-      : "Download Shopee videos without watermark quickly and for free. Paste the video URL and download instantly.",
+      ? "Baixe vídeos da Shopee em qualidade original de forma rápida e gratuita. Cole a URL do vídeo e faça o download instantaneamente. Ferramenta independente não afiliada à Shopee."
+      : "Download Shopee videos in original quality quickly and for free. Paste the video URL and download instantly. Independent tool not affiliated with Shopee.",
     keywords: [
       "shopee",
       "video downloader",
       isPt ? "baixar video shopee" : "download shopee video",
-      isPt ? "shopee sem marca dagua" : "shopee without watermark",
+      isPt ? "shopee qualidade original" : "shopee original quality",
       "download shopee",
       "shopee video",
-      isPt ? "remover marca dagua shopee" : "remove shopee watermark",
+      isPt ? "baixar shopee hd" : "download shopee hd",
     ],
     authors: [{ name: "Shopee Video Downloader" }],
     creator: "Shopee Video Downloader",
@@ -60,11 +60,11 @@ export async function generateMetadata({
     },
     openGraph: {
       title: isPt
-        ? "Shopee Video Downloader - Baixe Vídeos da Shopee Sem Marca D'água"
-        : "Shopee Video Downloader - Download Shopee Videos Without Watermark",
+        ? "Shopee Video Downloader - Baixe Vídeos da Shopee em Qualidade Original"
+        : "Shopee Video Downloader - Download Shopee Videos in Original Quality",
       description: isPt
-        ? "Baixe vídeos da Shopee sem marca d'água de forma rápida e gratuita. Cole a URL do vídeo e faça o download instantaneamente."
-        : "Download Shopee videos without watermark quickly and for free. Paste the video URL and download instantly.",
+        ? "Baixe vídeos da Shopee em qualidade original de forma rápida e gratuita. Ferramenta independente não afiliada à Shopee."
+        : "Download Shopee videos in original quality quickly and for free. Independent tool not affiliated with Shopee.",
       url: `/${locale}`,
       siteName: "Shopee Video Downloader",
       locale: isPt ? "pt_BR" : "en_US",
@@ -73,11 +73,11 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: isPt
-        ? "Shopee Video Downloader - Baixe Vídeos da Shopee Sem Marca D'água"
-        : "Shopee Video Downloader - Download Shopee Videos Without Watermark",
+        ? "Shopee Video Downloader - Baixe Vídeos da Shopee em Qualidade Original"
+        : "Shopee Video Downloader - Download Shopee Videos in Original Quality",
       description: isPt
-        ? "Baixe vídeos da Shopee sem marca d'água de forma rápida e gratuita."
-        : "Download Shopee videos without watermark quickly and for free.",
+        ? "Baixe vídeos da Shopee em qualidade original de forma rápida e gratuita."
+        : "Download Shopee videos in original quality quickly and for free.",
     },
     robots: {
       index: true,

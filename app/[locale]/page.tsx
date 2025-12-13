@@ -246,8 +246,8 @@ export default function Home() {
                     <Droplet className="w-8 h-8 text-primary" />
                   </div>
                 </div>
-                <h3 className="text-xl font-semibold">{tFeatures("noWatermark.title")}</h3>
-                <p className="text-muted-foreground">{tFeatures("noWatermark.description")}</p>
+                <h3 className="text-xl font-semibold">{tFeatures("highQuality.title")}</h3>
+                <p className="text-muted-foreground">{tFeatures("highQuality.description")}</p>
               </div>
 
               <div className="text-center space-y-3">
