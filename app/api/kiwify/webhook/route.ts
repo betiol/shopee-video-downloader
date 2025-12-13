@@ -146,15 +146,38 @@ export async function POST(request: NextRequest) {
         });
 
         // Handle paid orders - evento 'order_paid' ou status 'paid'
-        const isPaid = payload.webhook_event_type === 'order_paid' || payload.order_status === 'paid';
+        const isPaid = payload.webhook_event_type === 'order_paid' || 
+                      payload.webhook_event_type === 'order_approved' || 
+                      payload.order_status === 'paid';
         
         if (isPaid) {
             // Tentar pegar userId do metadata ou dos tracking parameters
             const userId = payload.metadata?.userId || payload.TrackingParameters?.s1;
             const customerEmail = payload.Customer?.email || payload.metadata?.email;
 
+            // Detectar se é um webhook de teste da Kiwify
+            const isTestWebhook = customerEmail === 'johndoe@example.com' || 
+                                 payload.Customer?.full_name === 'John Doe' ||
+                                 !userId;
+
+            if (isTestWebhook) {
+                console.warn("⚠️ Webhook de teste detectado (sem userId ou email de exemplo)");
+                console.log("📋 Dados do teste:", {
+                    email: customerEmail,
+                    name: payload.Customer?.full_name,
+                    amount: payload.Commissions?.charge_amount ? payload.Commissions.charge_amount / 100 : 0,
+                    paymentMethod: payload.payment_method,
+                });
+                return NextResponse.json({ 
+                    received: true, 
+                    note: "Test webhook received successfully",
+                    message: "Para webhooks reais, certifique-se de passar o userId via tracking parameter s1"
+                });
+            }
+
             if (!userId) {
                 console.error("❌ No userId in webhook metadata!");
+                console.error("💡 Certifique-se de que o checkout está passando s1 com o userId");
                 return NextResponse.json({ 
                     received: true, 
                     error: "No userId in metadata" 
