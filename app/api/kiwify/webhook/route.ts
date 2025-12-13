@@ -87,42 +87,28 @@ export async function POST(request: NextRequest) {
 
         // Verify webhook signature if secret is configured
         if (process.env.KIWIFY_WEBHOOK_SECRET && signature) {
-            // Método 1: HMAC-SHA256 do body direto
-            const expectedSignature1 = crypto
-                .createHmac("sha256", process.env.KIWIFY_WEBHOOK_SECRET)
-                .update(body)
+            // Parse the payload first
+            const payload: KiwifyWebhookPayload = JSON.parse(body);
+            
+            // Kiwify usa SHA1 (não SHA256) e faz HMAC do JSON stringificado
+            const calculatedSignature = crypto
+                .createHmac("sha1", process.env.KIWIFY_WEBHOOK_SECRET)
+                .update(JSON.stringify(payload))
                 .digest("hex");
-
-            // Método 2: HMAC-SHA256 do body com encoding UTF-8 explícito
-            const expectedSignature2 = crypto
-                .createHmac("sha256", process.env.KIWIFY_WEBHOOK_SECRET)
-                .update(body, 'utf8')
-                .digest("hex");
-
-            // Método 3: Base64
-            const expectedSignature3 = crypto
-                .createHmac("sha256", process.env.KIWIFY_WEBHOOK_SECRET)
-                .update(body)
-                .digest("base64");
 
             console.log("🔐 Signature validation:");
             console.log("Received:", signature);
-            console.log("Expected (hex):", expectedSignature1.substring(0, 10) + "...");
-            console.log("Expected (utf8):", expectedSignature2.substring(0, 10) + "...");
-            console.log("Expected (base64):", expectedSignature3.substring(0, 10) + "...");
+            console.log("Expected (sha1):", calculatedSignature.substring(0, 10) + "...");
 
-            const isValid = signature === expectedSignature1 || 
-                          signature === expectedSignature2 || 
-                          signature === expectedSignature3;
-
-            if (!isValid) {
+            if (signature !== calculatedSignature) {
                 console.error("❌ Invalid Kiwify webhook signature");
-                console.error("💡 Dica: Verifique se o KIWIFY_WEBHOOK_SECRET está correto");
-                console.error("💡 Ou descomente a linha abaixo para aceitar sem validação (APENAS PARA TESTE)");
-                // return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
+                console.error("Expected:", calculatedSignature);
+                console.error("Received:", signature);
+                console.error("💡 Verifique se o KIWIFY_WEBHOOK_SECRET está correto");
                 
                 // TEMPORÁRIO: Aceitar mesmo com signature inválida para debug
                 console.warn("⚠️ Continuando sem validação de signature (MODO DEBUG)");
+                // return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
             } else {
                 console.log("✅ Kiwify webhook signature verified");
             }
