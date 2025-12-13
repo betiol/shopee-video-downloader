@@ -33,7 +33,7 @@ export async function sendThankYouEmail({ to, userName }: SendThankYouEmailParam
         const { data, error } = await resend.emails.send({
             from: fromEmail,
             to: [to],
-            replyTo: 'suporte@shopeevideodownloader.com',
+            replyTo: 'contato@shopeevideodownloader.com',
             subject: "🎉 Bem-vindo ao Premium - Shopee Video Downloader",
             html: emailHtml,
             headers: {
